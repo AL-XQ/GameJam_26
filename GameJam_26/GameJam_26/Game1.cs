@@ -95,7 +95,8 @@ namespace GameJam_26
 
         public void AfterInitialize()
         {
-
+            gameRun.scenes["title"] = new TitleScene("title", GraphicsDevice, null, gameRun);
+            gameRun.firstScene = "title";
         }
 
         public void LastInitialize()
