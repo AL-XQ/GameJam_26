@@ -15,7 +15,5 @@ namespace GameJam_26.Scene.Stage
         {
 
         }
-
-        
     }
 }
