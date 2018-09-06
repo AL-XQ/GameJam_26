@@ -20,6 +20,7 @@ namespace GameJam_26.Scene.UI
         private AnimeButton exit;
         public MainMenu(GraphicsDevice aGraphicsDevice, BaseDisplay parent) : base(aGraphicsDevice, parent)
         {
+
         }
 
         public override void Initialize()
@@ -42,7 +43,7 @@ namespace GameJam_26.Scene.UI
             start.Size = new Size(size.Width * 4 / 5, size.Height * 1 / 4);
             credit.Size = start.Size;
             exit.Size = start.Size;
-            start.Location = new Point(size.Width / 2 - start.Size.Width / 2, 40);
+            start.Location = new Point(size.Width / 2 - start.Size.Width / 2, 60);
             credit.Location = start.Location + new Point(0, start.Size.Height + 10);
             exit.Location = credit.Location + new Point(0, credit.Size.Height + 10);
 
