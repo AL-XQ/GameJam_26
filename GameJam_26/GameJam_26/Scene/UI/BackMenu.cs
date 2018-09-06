@@ -9,6 +9,7 @@ using InfinityGame.GameGraphics;
 using Microsoft.Xna.Framework.Graphics;
 using InfinityGame.Element;
 using Microsoft.Xna.Framework;
+using InfinityGame;
 
 namespace GameJam_26.Scene.UI
 {
@@ -24,17 +25,25 @@ namespace GameJam_26.Scene.UI
         {
             base.Initialize();
         }
+        private void RegistEvent()
+        {
+            title.Click += Title;
+            exit.Click += Exit;
+            back.Click += Back;
+        }
         public override void PreLoadContent()
         {
             back = new AnimeButton(graphicsDevice, this);
             title = new AnimeButton(graphicsDevice, this);
             exit = new AnimeButton(graphicsDevice, this);
-            back.Size = new Size(250, 75);
-            title.Size = new Size(250, 75);
-            exit.Size = new Size(250, 75);
-            back.Location = new Point(10, 10);
-            title.Location = new Point(10, 95);
-            exit.Location = new Point(10, 180);
+            back.Size = new Size(Size.Width * 4 / 5, Size.Height * 1 / 4);
+            title.Size = back.Size;
+            exit.Size = back.Size;
+            back.Location = new Point(size.Width / 2 - back.Size.Width / 2, 60);
+            title.Location = back.Location + new Point(0,back.Size.Height+10);
+            exit.Location = title.Location + new Point(0,title.Size.Height+10);
+
+            RegistEvent();
             base.PreLoadContent();
         }
         public override void LoadContent()
@@ -47,6 +56,24 @@ namespace GameJam_26.Scene.UI
             exit.TextAlign = ContentAlignment.MiddleCenter;
 
             base.LoadContent();
+        }
+
+        private void Back(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void Title(object sender, EventArgs e)
+        {
+            var sc = GameRun.Instance.scenes;
+            sc["play"].IsRun = false;
+            sc["title"].IsRun = true;
+            sc["play"].Initialize();
+        }
+
+        private void Exit(object sender, EventArgs e)
+        {
+            Program.Exit();
         }
     }
 }

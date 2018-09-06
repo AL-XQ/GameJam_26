@@ -37,7 +37,7 @@ namespace GameJam_26.Scene
             new Stage01(GraphicsDevice, this, "Stage01");
             ending = new UIWindow(graphicsDevice, this);
             ending.Size = new Size(size.Width * 4 / 5, size.Height * 2 / 3);
-            ending.Location = (size / 2 - backMenu.Size / 2).ToPoint();
+            ending.Location = (size / 2 - ending.Size / 2).ToPoint();
             backMenu = new BackMenu(graphicsDevice, this);
             backMenu.Size = new Size(size.Width/5,size.Height/2);
             backMenu.Location = (size / 2 - backMenu.Size / 2).ToPoint();
