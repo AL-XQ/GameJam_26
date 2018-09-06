@@ -20,11 +20,11 @@ namespace GameJam_26.Scene
     public class TitleScene : BaseScene
     {
         private MainMenu mainMeun;
-        
+
 
         public TitleScene(string aName, GraphicsDevice aGraphicsDevice, BaseDisplay aParent, GameRun aGameRun) : base(aName, aGraphicsDevice, aParent, aGameRun)
         {
-
+            
         }
 
         public override void Initialize()
@@ -35,14 +35,14 @@ namespace GameJam_26.Scene
         public override void PreLoadContent()
         {
             mainMeun = new MainMenu(graphicsDevice, this);
-            mainMeun.Size = new Size(size.Width / 5, size.Height / 2);
-            mainMeun.Location = (size / 2 - mainMeun.Size / 2).ToPoint();
+            mainMeun.Size = new Size(size.Width * 2 / 7, size.Height / 3);
+            mainMeun.Location = new Point(size.Width / 2 - mainMeun.Size.Width / 2, size.Height * 2 / 3);
             base.PreLoadContent();
         }
 
         public override void LoadContent()
         {
-            mainMeun.Text = GetText("mainMendragonu");
+            mainMeun.Text = GetText("mainMenu");
             base.LoadContent();
         }
     }
