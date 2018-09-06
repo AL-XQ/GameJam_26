@@ -12,6 +12,8 @@ using System;
 using System.Threading;
 using InfinityGame.Device.WindowsScreen;
 
+using GameJam_26.Scene;
+
 /// <summary>
 /// プロジェクト名がnamespaceとなります
 /// </summary>
@@ -29,6 +31,7 @@ namespace GameJam_26
         private string title = "GameJam_26";
         private GameRun gameRun;
         private InfinityGame.Element.Size tempScreen;
+        private Load_Scene Load_Scene;
 
 
         /// <summary>
@@ -84,7 +87,9 @@ namespace GameJam_26
         {
             Resources.SetGD(GraphicsDevice);
             GameTexts.Initialize(IGConfig.gameLanguage);
-            gameRun = new GameRun(GraphicsDevice, graphicsDeviceManager, false);
+            gameRun = new GameRun(GraphicsDevice, graphicsDeviceManager, true);
+            Load_Scene = new Load_Scene("Loading", GraphicsDevice, null, gameRun);
+            gameRun.SetLoadScene(Load_Scene);
             Window.Title = GameTexts.GetText(title);
         }
 
