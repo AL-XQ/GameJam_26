@@ -8,3 +8,4 @@
 <Start:スタート>
 <Credit:クレジット>
 <Exit:終了>
+<ending:エンディング>

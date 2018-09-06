@@ -20,6 +20,7 @@ namespace GameJam_26.Scene.UI
         private AnimeButton exit;
         public BackMenu(GraphicsDevice aGraphicsDevice, BaseDisplay parent) : base(aGraphicsDevice, parent)
         {
+            visible = false;
         }
         public override void Initialize()
         {

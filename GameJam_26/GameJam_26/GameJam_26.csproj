@@ -68,6 +68,7 @@
     <Compile Include="Scene\Stage\Stage01.cs" />
     <Compile Include="Scene\TitleScene.cs" />
     <Compile Include="Scene\UI\BackMenu.cs" />
+    <Compile Include="Scene\UI\Ending.cs" />
     <Compile Include="Scene\UI\MainMenu.cs" />
   </ItemGroup>
   <ItemGroup>
