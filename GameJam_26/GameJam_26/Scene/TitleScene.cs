@@ -42,7 +42,7 @@ namespace GameJam_26.Scene
 
         public override void LoadContent()
         {
-            mainMeun.Text = GetText("mainMenu");
+            mainMeun.Text = GetText("MainMenu");
             base.LoadContent();
         }
     }

@@ -46,7 +46,7 @@ namespace GameJam_26.Scene
         }
         public override void LoadContent()
         {
-            backMenu.Text = GetText("backMenu");
+            backMenu.Text = GetText("BackMenu");
             base.LoadContent();
         }
 

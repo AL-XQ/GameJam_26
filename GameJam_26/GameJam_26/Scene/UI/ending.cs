@@ -31,15 +31,15 @@ namespace GameJam_26.Scene.UI
         public override void PreLoadContent()
         {
             end = new Label(graphicsDevice, this);
-            end.TextSize = 72f;
+            end.TextSize = 48f;
             end.Size = new Size(Size.Width * 4 / 5, Size.Height * 1 / 4);
-            end.Location = new Point(size.Width / 2 - end.Size.Width / 2, 60);
             RegistEvent();
             base.PreLoadContent();
         }
         public override void LoadContent()
         {
-            end.Text = GetText("ending");
+            end.Location = new Point(size.Width / 2 - end.Size.Width / 2, 60);
+            end.Text = GetText("Ending");
             end.TextAlign = ContentAlignment.MiddleCenter;
             base.LoadContent();
         }
