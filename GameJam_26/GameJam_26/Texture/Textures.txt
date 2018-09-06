@@ -1,2 +1,3 @@
 ﻿<IG:1>
 <button01:1>
+<titlescene.jpg:0>

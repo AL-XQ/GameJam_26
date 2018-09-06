@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework;
 using InfinityGame.UI;
 using InfinityGame.UI.UIContent;
 using InfinityGame.Element;
+using InfinityGame.Device;
 
 using GameJam_26.Scene.UI;
 
@@ -43,6 +44,7 @@ namespace GameJam_26.Scene
         public override void LoadContent()
         {
             mainMeun.Text = GetText("mainMenu");
+            image = ImageManage.GetSImage("titlescene.jpg");
             base.LoadContent();
         }
     }
