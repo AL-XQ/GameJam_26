@@ -67,6 +67,7 @@
     <Compile Include="Scene\Stage\Base_Stage.cs" />
     <Compile Include="Scene\Stage\Stage01.cs" />
     <Compile Include="Scene\TitleScene.cs" />
+    <Compile Include="Scene\UI\MainMenu.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="InfinityGame, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
