@@ -3,3 +3,4 @@
 <Font:MS UI Gothic>
 <Loading:読み込み中>
 <StartUpText:ロード中>
+<backMenu:バックメニュー>
