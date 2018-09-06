@@ -12,6 +12,9 @@ using Microsoft.Xna.Framework;
 using InfinityGame;
 using InfinityGame.Device;
 
+using InfinityGame.Device.KeyboardManage;
+using Microsoft.Xna.Framework.Input;
+
 namespace GameJam_26.Scene.UI
 {
     public class BackMenu : UIWindow
@@ -21,10 +24,14 @@ namespace GameJam_26.Scene.UI
         private AnimeButton exit;
         public BackMenu(GraphicsDevice aGraphicsDevice, BaseDisplay parent) : base(aGraphicsDevice, parent)
         {
-            //visible = false;
+            BorderOn = false;
+            CanClose = false;
+            CanMove = false;
+            backColor = Color.Transparent;
         }
         public override void Initialize()
         {
+            visible = false;
             base.Initialize();
         }
         private void RegistEvent()
@@ -38,12 +45,12 @@ namespace GameJam_26.Scene.UI
             back = new AnimeButton(graphicsDevice, this);
             title = new AnimeButton(graphicsDevice, this);
             exit = new AnimeButton(graphicsDevice, this);
-            back.Size = new Size(Size.Width * 4 / 5, Size.Height * 1 / 4);
+            back.Size = new Size(Size.Width * 4 / 5, Size.Height/ 4);
             title.Size = back.Size;
             exit.Size = back.Size;
-            back.Location = new Point(size.Width / 2 - back.Size.Width / 2, 60);
-            title.Location = back.Location + new Point(0,back.Size.Height+10);
-            exit.Location = title.Location + new Point(0,title.Size.Height+10);
+            back.Location = new Point(size.Width / 2 - back.Size.Width / 2, 30);
+            title.Location = back.Location + new Point(0, back.Size.Height + 10);
+            exit.Location = title.Location + new Point(0, title.Size.Height + 10);
 
             RegistEvent();
             base.PreLoadContent();
@@ -59,6 +66,7 @@ namespace GameJam_26.Scene.UI
             back.Image = ImageManage.GetSImage("button01");
             title.Image = back.Image;
             exit.Image = back.Image;
+            Image = ImageManage.GetSImage("window.png");
             base.LoadContent();
         }
 

@@ -17,10 +17,11 @@ namespace GameJam_26.Scene.UI
         private Label end;
         public Ending(GraphicsDevice aGraphicsDevice, BaseDisplay parent) : base(aGraphicsDevice, parent)
         {
-            //visible = false;
+            
         }
         public override void Initialize()
         {
+            visible = false;
             base.Initialize();
         }
         private void RegistEvent()

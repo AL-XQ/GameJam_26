@@ -44,10 +44,10 @@ namespace GameJam_26.Scene.UI
             credit = new AnimeButton(graphicsDevice, this);
             exit = new AnimeButton(graphicsDevice, this);
 
-            start.Size = new Size(size.Width * 4 / 5, size.Height * 1 / 4);
+            start.Size = new Size(size.Width * 4 / 5, size.Height/ 4);
             credit.Size = start.Size;
             exit.Size = start.Size;
-            start.Location = new Point(size.Width / 2 - start.Size.Width / 2, 50);
+            start.Location = new Point(size.Width / 2 - start.Size.Width / 2, 30);
             credit.Location = start.Location + new Point(0, start.Size.Height + 10);
             exit.Location = credit.Location + new Point(0, credit.Size.Height + 10);
 

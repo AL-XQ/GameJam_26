@@ -1,3 +1,7 @@
 ﻿<IG:1>
 <button01:1>
 <titlescene.jpg:0>
+<field.png:0>
+<stageborder.png:0>
+<window.png:0>
+<conchara.png:0>
