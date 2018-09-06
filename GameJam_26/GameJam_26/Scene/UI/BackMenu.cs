@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 using InfinityGame.Element;
 using Microsoft.Xna.Framework;
 using InfinityGame;
+using InfinityGame.Device;
 
 namespace GameJam_26.Scene.UI
 {
@@ -20,7 +21,7 @@ namespace GameJam_26.Scene.UI
         private AnimeButton exit;
         public BackMenu(GraphicsDevice aGraphicsDevice, BaseDisplay parent) : base(aGraphicsDevice, parent)
         {
-            visible = false;
+            //visible = false;
         }
         public override void Initialize()
         {
@@ -49,13 +50,15 @@ namespace GameJam_26.Scene.UI
         }
         public override void LoadContent()
         {
-            back.Text = GetText("back");
-            title.Text = GetText("title");
-            exit.Text = GetText("exit");
+            back.Text = GetText("Back");
+            title.Text = GetText("Title");
+            exit.Text = GetText("Exit");
             back.TextAlign = ContentAlignment.MiddleCenter;
             title.TextAlign = ContentAlignment.MiddleCenter;
             exit.TextAlign = ContentAlignment.MiddleCenter;
-
+            back.Image = ImageManage.GetSImage("button01");
+            title.Image = back.Image;
+            exit.Image = back.Image;
             base.LoadContent();
         }
 

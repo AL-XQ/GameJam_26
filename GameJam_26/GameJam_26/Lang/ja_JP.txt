@@ -3,9 +3,11 @@
 <Font:MS UI Gothic>
 <Loading:読み込み中>
 <StartUpText:ロード中>
-<backMenu:バックメニュー>
-<mainMenu:メインメニュー>
+<BackMenu:バックメニュー>
+<MainMenu:メインメニュー>
 <Start:スタート>
 <Credit:クレジット>
-<ending:エンディング>
-
+<Ending:エンディング>
+<Back:戻る>
+<Title:タイトル>
+<Exit:終了>
