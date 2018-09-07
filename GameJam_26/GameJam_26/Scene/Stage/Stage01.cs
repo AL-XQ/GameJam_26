@@ -35,7 +35,6 @@ namespace GameJam_26.Scene.Stage
 
         public override void LoadContent()
         {
-            Console.WriteLine(true);
             stageObjs["field"].Image = ImageManage.GetSImage("field.png");
             stageObjs["field"].Color = Color.YellowGreen;
             Color c = Color.Peru;

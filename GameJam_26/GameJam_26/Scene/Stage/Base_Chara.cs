@@ -13,6 +13,7 @@ namespace GameJam_26.Scene.Stage
     {
         public Base_Chara(GraphicsDevice aGraphicsDevice, BaseDisplay aParent, string aName) : base(aGraphicsDevice, aParent, aName)
         {
+            BeAffect = false;
         }
     }
 }

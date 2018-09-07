@@ -63,6 +63,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scene\Load_Scene.cs" />
     <Compile Include="Scene\PlayScene.cs" />
+    <Compile Include="Scene\Stage\Base_Crimp.cs" />
+    <Compile Include="Scene\Stage\ISpeed.cs" />
     <Compile Include="Scene\Stage\Item.cs" />
     <Compile Include="Scene\Stage\Base_Stage.cs" />
     <Compile Include="Scene\Stage\Base_Chara.cs" />
@@ -186,6 +188,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Texture\IG\IG_0019.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Texture\item.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Texture\stageborder.png">

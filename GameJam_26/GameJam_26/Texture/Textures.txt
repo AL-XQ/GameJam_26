@@ -5,3 +5,4 @@
 <stageborder.png:0>
 <window.png:0>
 <conchara.png:0>
+<item.png:0>
