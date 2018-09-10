@@ -47,6 +47,8 @@ namespace GameJam_26.Scene
         public override void PreLoadContent()
         {
             new Stage01(GraphicsDevice, this, "Stage01");
+            new Stage02(GraphicsDevice, this, "Stage02");
+
             label01 = new Label(graphicsDevice, this);
             label01.TextSize = 24f;
             label02 = new Label(graphicsDevice, this);
@@ -54,7 +56,8 @@ namespace GameJam_26.Scene
             label03 = new Label(graphicsDevice, this);
             label03.TextSize = 24f;
             plp = new Panel(graphicsDevice, this);
-            ShowStage = stages["Stage01"];
+            
+            ShowStage = stages["Stage02"];
             ending = new Ending(graphicsDevice, this);
             ending.Size = new Size(size.Width * 4 / 5, size.Height * 2 / 3);
             ending.Location = (size / 2 - ending.Size / 2).ToPoint();

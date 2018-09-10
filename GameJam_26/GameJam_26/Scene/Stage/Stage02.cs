@@ -1,0 +1,120 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using InfinityGame.GameGraphics;
+using InfinityGame.Device;
+
+using InfinityGame.Stage.StageObject;
+using Microsoft.Xna.Framework.Graphics;
+using InfinityGame.Element;
+using InfinityGame.Def;
+using Microsoft.Xna.Framework;
+namespace GameJam_26.Scene.Stage
+{
+    class Stage02 : Base_Stage
+    {
+        public Stage02(GraphicsDevice aGraphicsDevice, BaseDisplay aParent, string aName) : base(aGraphicsDevice, aParent, aName)
+        {
+
+        }
+        public override void Initialize()
+        {
+            Size sc = IGConfig.screen;
+            Size ms = sc;
+            int sp = ms.Height / 25;
+            ms -= new Size(sp * 2, sp * 2);
+            Size size0 = new Size(ms.Width/12  , ms.Height /12);//横と縦を12分　トゲと壁
+            Size size1 = new Size(size0.Width, size0.Height * 2);//パニックエリア
+            Size size2 = new Size(size0.Width , size0.Height*11);//ベンディングエリア
+            Size size3 = new Size(size0.Width/2, size0.Height * 2);
+
+            stageObjs["wall00"].Size = size3;
+            stageObjs["wall01"].Size = size3;
+            stageObjs["niddle00"].Size = size0;
+            stageObjs["niddle01"].Size = size0;
+
+            
+            stageObjs["panicarea00"].Size = size1;
+            stageObjs["panicarea01"].Size = size1;
+            stageObjs["panicarea02"].Size = size1;
+            stageObjs["panicarea03"].Size = size1;
+
+            stageObjs["bendingarea00"].Size = size2;
+            stageObjs["bendingarea01"].Size = size2;
+
+            stageObjs["wall00"].Coordinate = new Vector2(sp + 0.75f * size0.Width, sp + 5.0f * size0.Height);
+            stageObjs["wall01"].Coordinate = new Vector2(sp + 10.75f * size0.Width, sp + 5.0f * size0.Height);
+            stageObjs["niddle00"].Coordinate = new Vector2(sp + 5.525f * size0.Width, sp + 0.75f * size0.Height);
+            stageObjs["niddle01"].Coordinate = new Vector2(sp + 5.525f * size0.Width, sp + 10.4f * size0.Height);
+
+
+            stageObjs["panicarea00"].Coordinate = new Vector2(sp + 0.5f * size0.Width, sp + 1.6f * size0.Height);
+            stageObjs["panicarea01"].Coordinate = new Vector2(sp + 0.5f * size0.Width, sp + 8.5f * size0.Height);
+            stageObjs["panicarea02"].Coordinate = new Vector2(sp + 10.5f * size0.Width, sp + 1.6f * size0.Height);
+            stageObjs["panicarea03"].Coordinate = new Vector2(sp + 10.5f * size0.Width, sp + 8.5f * size0.Height);
+
+            stageObjs["bendingarea00"].Coordinate = new Vector2(sp + 2f * size0.Width, sp + 0.59f * size0.Height);
+            stageObjs["bendingarea01"].Coordinate = new Vector2(sp + 9f * size0.Width, sp + 0.59f * size0.Height);
+
+            stageObjs["item00"].Coordinate = new Vector2(sp + 0.7f * size0.Width, sp + 0.25f * size0.Height);
+            stageObjs["item01"].Coordinate = new Vector2(sp + 0.7f * size0.Width, sp + 10.5f * size0.Height);
+            stageObjs["item02"].Coordinate = new Vector2(sp + 10.7f * size0.Width, sp + 0.25f * size0.Height);
+            stageObjs["item03"].Coordinate = new Vector2(sp + 10.7f * size0.Width, sp + 10.5f * size0.Height);
+            stageObjs["item04"].Coordinate = new Vector2(sp + 5.725f * size0.Width, sp + 5.25f * size0.Height);
+
+            stageObjs["One_0"].Coordinate = new Vector2(sp + 4.5f * size0.Width, sp + 5.25f * size0.Height);
+            stageObjs["One_1"].Coordinate = new Vector2(sp + 4.75f * size0.Width, sp + 5f * size0.Height);
+            stageObjs["One_2"].Coordinate = new Vector2(sp + 4.75f * size0.Width, sp + 7f * size0.Height);
+
+            stageObjs["Two_0"].Coordinate = new Vector2(sp + 6.25f * size0.Width, sp + 5.25f * size0.Height);
+            stageObjs["Two_1"].Coordinate = new Vector2(sp + 6.5f * size0.Width, sp + 5f * size0.Height);
+            stageObjs["Two_2"].Coordinate = new Vector2(sp + 6.5f * size0.Width, sp + 7f * size0.Height);
+
+            base.Initialize();
+        }
+        public override void PreLoadContent()
+        {
+            new Wall(graphicsDevice, this, "wall00");
+            new Wall(graphicsDevice, this, "wall01");
+            
+            new Niddle(graphicsDevice, this, "niddle00");
+            new Niddle(graphicsDevice, this, "niddle01");
+           
+
+            new PanicArea(graphicsDevice, this, "panicarea00");
+            new PanicArea(graphicsDevice, this, "panicarea01");
+            new PanicArea(graphicsDevice, this, "panicarea02");
+            new PanicArea(graphicsDevice, this, "panicarea03");
+
+            new PanicArea(graphicsDevice, this, "bendingarea00");
+            new PanicArea(graphicsDevice, this, "bendingarea01");
+
+            new Item(graphicsDevice, this, "item00");
+            new Item(graphicsDevice, this, "item01");
+            new Item(graphicsDevice, this, "item02");
+            new Item(graphicsDevice, this, "item03");
+            new Item(graphicsDevice, this, "item04");
+
+            base.PreLoadContent();
+        }
+        public override void LoadContent()
+        {
+            stageObjs["field"].Image = ImageManage.GetSImage("field.png");
+            stageObjs["field"].Color = Color.YellowGreen;
+            Color c = Color.Peru;
+            stageObjs["border_top"].Color = c;
+            stageObjs["border_left"].Color = c;
+            stageObjs["border_right"].Color = c;
+            stageObjs["border_bottom"].Color = c;
+            var im = ImageManage.GetSImage("stageborder.png");
+            stageObjs["border_top"].Image = im;
+            stageObjs["border_left"].Image = im;
+            stageObjs["border_right"].Image = im;
+            stageObjs["border_bottom"].Image = im;
+            base.LoadContent();
+        }
+    }
+}
