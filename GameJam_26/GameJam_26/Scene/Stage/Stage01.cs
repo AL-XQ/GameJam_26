@@ -27,7 +27,7 @@ namespace GameJam_26.Scene.Stage
             Size ms = sc;
             int sp = ms.Height / 25;
             ms -= new Size(sp * 2, sp * 2);
-            Size size0 = new Size(ms.Width / 12, ms.Height / 12);
+            Size size0 = new Size(ms.Width / 12, ms.Height / 12);//横と縦を12分
             Size size1 = new Size(size0.Width, size0.Height * 2);
             Size size2 = new Size(size0.Width * 4, size0.Height);
             Size size3 = new Size(size0.Width * 2, size0.Height * 4);
@@ -66,9 +66,9 @@ namespace GameJam_26.Scene.Stage
             stageObjs["One_1"].Coordinate = new Vector2(sp + 1f * size0.Width, sp + 4f * size0.Height);
             stageObjs["One_2"].Coordinate = new Vector2(sp + 1f * size0.Width, sp + 7f * size0.Height);
 
-            stageObjs["Two_0"].Coordinate = new Vector2(sp + 11.5f * size0.Width, sp + 5.5f * size0.Height);
-            stageObjs["Two_1"].Coordinate = new Vector2(sp + 11f * size0.Width, sp + 4f * size0.Height);
-            stageObjs["Two_2"].Coordinate = new Vector2(sp + 11f * size0.Width, sp + 7f * size0.Height);
+            stageObjs["Two_0"].Coordinate = new Vector2(sp + 11f * size0.Width, sp + 5.5f * size0.Height);
+            stageObjs["Two_1"].Coordinate = new Vector2(sp + 10.5f * size0.Width, sp + 4f * size0.Height);
+            stageObjs["Two_2"].Coordinate = new Vector2(sp + 10.5f * size0.Width, sp + 7f * size0.Height);
 
             base.Initialize();
         }
