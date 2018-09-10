@@ -24,6 +24,7 @@ namespace GameJam_26.Scene.Stage
         private int pl_index = 0;
         private Random rnd = new Random();
         private int timedown = 15 * 60;
+        private int t_timedown = 15 * 60;
         private float resistance = 0.008f;
         private float g_v = 2f;
         private bool gameOver = false;
@@ -53,7 +54,7 @@ namespace GameJam_26.Scene.Stage
             turnstate = 0;
             gameOver = false;
             pl_index = rnd.Next(2);
-            timedown = 15 * 60;
+            timedown = t_timedown;
             foreach (var l in players)
             {
                 l.Initialize();
@@ -67,7 +68,6 @@ namespace GameJam_26.Scene.Stage
             new StageBorder(graphicsDevice, this, "border_left");
             new StageBorder(graphicsDevice, this, "border_right");
             new StageBorder(graphicsDevice, this, "border_bottom");
-            new Item(graphicsDevice, this, "item01");
             sf.Size = IGConfig.screen;
             stageObjs["border_top"].Size = new Size(sf.Size.Width, sf.Size.Height / 25);
             stageObjs["border_left"].Size = new Size(sf.Size.Height / 25, sf.Size.Height - sf.Size.Height * 2 / 25);//WidthをHeightのままにデザイン
@@ -113,7 +113,10 @@ namespace GameJam_26.Scene.Stage
                     if (timedown > 0)
                         timedown--;
                     if (players[pl_index].Update(gameTime) || timedown == 0)
+                    {
+                        players[pl_index].TrunReset();
                         turnstate = 1;
+                    }
                 }
                 else if (turnstate == 1 && runf == 0)
                     ChangeTurn();
@@ -129,10 +132,11 @@ namespace GameJam_26.Scene.Stage
 
         private void ChangeTurn()
         {
-            timedown = 15 * 60;
+            timedown = t_timedown;
             ChangePlayer();
             turn--;
             turnstate = 0;
+            ((PlayScene)StageScene).ChangeTrun(pl_index);
         }
 
         public void ChangePlayer()

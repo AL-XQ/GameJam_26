@@ -22,9 +22,13 @@ namespace GameJam_26.Scene.Stage
         private Base_Stage stage;
         private List<ConChara> charas = new List<ConChara>();
         private int foucs;
-        private StageField mark;
+        private Mark mark;
+        private StageField markBase;
+        private Vector2 mksz = new Vector2(300, 120);
         public Vector2 lastv = Vector2.Zero, nowv = Vector2.Zero;
+        private Random rnd = new Random();
 
+        private int _Foucs { get => foucs; set => SetFoucs(value); }
         public PlayerIndex Index { get => index; }
         public List<ConChara> Charas { get => charas; }
         public ConChara Foucs { get => charas[foucs]; }
@@ -63,6 +67,7 @@ namespace GameJam_26.Scene.Stage
                 l.Color = Color.White;
             }
             foucs = 1;
+            mark.Size = Size.Parse(mksz.ToPoint());
         }
 
         public void PreLoadContent()
@@ -71,15 +76,28 @@ namespace GameJam_26.Scene.Stage
             {
                 charas.Add(new ConChara(stage.GraphicsDevice, stage, index.ToString() + "_" + i.ToString(), this));
             }
-            mark = new StageField(stage.GraphicsDevice, stage, index.ToString() + "_mark");
+            mark = new Mark(stage.GraphicsDevice, stage, index.ToString() + "_mark");
+            markBase = new StageField(stage.GraphicsDevice, stage, index.ToString() + "_markBase");
         }
 
         public void LoadContent()
         {
-            mark.Color = Color.Red;
-            mark.Image = ImageManage.GetSImage("conchara.png");
-            mark.Size = new Size(20, 20);
-            mark.DrawOrder = 10;
+            mark.Image = ImageManage.GetSImage("yajirusi.png");
+            //markBase.Color = Color.Green;
+            markBase.Image = ImageManage.GetSImage("markbase.png");
+            markBase.DrawOrder = 0;
+        }
+
+        private void SetFoucs(int value)
+        {
+            if (value == -1)
+                foucs = 2;
+            else if (value == 3)
+                foucs = 0;
+            else
+                foucs = value;
+            if (Foucs.SkipTrun)
+                _Foucs++;
         }
 
         public void ResetV()
@@ -90,7 +108,18 @@ namespace GameJam_26.Scene.Stage
 
         public void FreeUpdate(GameTime gameTime)
         {
-            mark.Coordinate = Foucs.Circle.Center + nowv * 100f - (mark.Size / 2).ToVector2();
+            markBase.Size = Foucs.Size + new Size(20, 20);
+            markBase.Coordinate = Foucs.Circle.Center - (markBase.Size / 2).ToVector2();
+            mark.Size = Size.Parse((mksz * nowv.Length()).ToPoint());
+            mark.Coordinate = Foucs.Circle.Center;
+            mark.Rotation = (float)Math.Atan2(nowv.Y, nowv.X);
+            mark.DrawOrder = 10;
+            if (Foucs.Rndve)
+                mark.Visible = false;
+            else
+                mark.Visible = true;
+            if (Foucs.SkipTrun)
+                _Foucs++;
         }
 
         public bool Update(GameTime gameTime)
@@ -101,28 +130,34 @@ namespace GameJam_26.Scene.Stage
                 nowv.Normalize();
             if (IGGamePad.GetKeyTrigger(index, Buttons.DPadLeft) || IGGamePad.GetKeyTrigger(index, Buttons.DPadUp))
             {
-                foucs--;
-                if (foucs == -1)
-                    foucs = 2;
+                _Foucs--;
             }
             else if (IGGamePad.GetKeyTrigger(index, Buttons.DPadRight) || IGGamePad.GetKeyTrigger(index, Buttons.DPadDown))
             {
-                foucs++;
-                if (foucs == 3)
-                    foucs = 0;
+                _Foucs++;
             }
-            if (nowv.Length() > 0.1f&&IGGamePad.GetKeyTrigger(index,Buttons.RightShoulder)/*(nowv - lastv).Length() >= 0.3f && nowv.Length() <= lastv.Length() && nowv.Length() < 0.1f*/)
+            if (nowv.Length() > 0.0f && IGGamePad.GetKeyTrigger(index, Buttons.RightShoulder)/*(nowv - lastv).Length() >= 0.3f && nowv.Length() <= lastv.Length() && nowv.Length() < 0.1f*/)
             {
-                Vector2 f = -nowv;
-                Foucs.Speed = f * f * f * 80f;
+                if (Foucs.SkipTrun)
+                    return false;
+                Vector2 f = Vector2.Zero;
+                if (!Foucs.Rndve)
+                    f = -nowv;
+                else
+                    f = new Vector2(rnd.Next(101) / 100f, rnd.Next(101) / 100f);
+                Foucs.Speed = f * f * f * Foucs.MaxSpeed;
                 ResetV();
                 return true;
             }
-            /*if (IGGamePad.GetKeyTrigger(index, Buttons.A))
-            {
-                ((Item)stage.stageObjs["item01"]).RollDown(new Vector2(20, -20));
-            }*/
             return false;
+        }
+
+        public void TrunReset()
+        {
+            foreach (var l in charas)
+            {
+                l.SkipTrun = false;
+            }
         }
     }
 }

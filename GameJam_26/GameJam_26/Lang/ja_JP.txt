@@ -9,5 +9,6 @@
 <Credit:クレジット>
 <Ending:エンディング>
 <Back:戻る>
+<Reset:リセット>
 <Title:タイトル>
 <Exit:終了>

@@ -69,6 +69,9 @@
     <Compile Include="Scene\Stage\Base_Stage.cs" />
     <Compile Include="Scene\Stage\Base_Chara.cs" />
     <Compile Include="Scene\Stage\ConChara.cs" />
+    <Compile Include="Scene\Stage\Mark.cs" />
+    <Compile Include="Scene\Stage\Niddle.cs" />
+    <Compile Include="Scene\Stage\PanicArea.cs" />
     <Compile Include="Scene\Stage\Player.cs" />
     <Compile Include="Scene\Stage\Stage01.cs" />
     <Compile Include="Scene\Stage\StageBorder.cs" />
@@ -104,6 +107,12 @@
     <Content Include="Sound\Sounds.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Texture\1pWIN.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Texture\2pWIN.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Texture\button01\button01.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -123,6 +132,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Texture\conchara.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Texture\draw.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Texture\field.png">
@@ -194,6 +206,15 @@
     <Content Include="Texture\item.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Texture\markbase.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Texture\player0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Texture\player1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Texture\stageborder.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -204,6 +225,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Texture\window.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Texture\yajirusi.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

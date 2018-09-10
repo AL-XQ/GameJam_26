@@ -55,13 +55,14 @@ namespace GameJam_26.Scene.Stage
         {
             if (owner != null && chara != owner)
             {
-                owner.Item = null;
-                owner.Color = owner.Player.CharaColor;
+                owner.Items.Remove(Name);
+                if (owner.Items.Count == 0)
+                    owner.Color = owner.Player.CharaColor;
             }
             owner = chara;
             if (owner != null)
             {
-                owner.Item = this;
+                owner.Items.Add(Name, this);
                 owner.Color = Color.Red;
                 visible = false;
             }
@@ -134,10 +135,9 @@ namespace GameJam_26.Scene.Stage
                             if (((int)c.Player.Index == st.Pl_Index || (int)c.Player.Index == st.Pl_Index - 2) && c.Player.Foucs.Name == c.Name)
                             {
                                 SetOwner(c);
-                                Console.WriteLine(c.Name);
                             }
                         }
-                        else if (tempSO[l] is Wall && tempSO[l].NewSpace.Contains(NewSpace))
+                        else if (tempSO[l] is Wall && tempSO[l].NewSpace.Contains(NewSpace) || tempSO[l] is Item)
                         {
                             Initialize();
                         }

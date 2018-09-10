@@ -9,6 +9,7 @@ using InfinityGame.Element;
 using InfinityGame.Def;
 using Microsoft.Xna.Framework;
 using InfinityGame.Device;
+using InfinityGame.Stage.StageObject;
 
 namespace GameJam_26.Scene.Stage
 {
@@ -24,16 +25,34 @@ namespace GameJam_26.Scene.Stage
 
         public override void Initialize()
         {
-            Size = new Size(rnd.Next(S_T, L_T), rnd.Next(S_T,S_T));
+            Size = new Size(rnd.Next(S_T, L_T), rnd.Next(S_T, S_T));
             Coordinate = new Vector2(rnd.Next(IGConfig.screen.Width / 4, IGConfig.screen.Width * 3 / 4), rnd.Next(IGConfig.screen.Height / 4, IGConfig.screen.Height * 3 / 4));
-            Color = Color.Blue;
             base.Initialize();
         }
 
         public override void LoadContent()
         {
-            Image = ImageManage.GetSImage("stageborder.png");
+            Desi();
             base.LoadContent();
+        }
+
+        public virtual void Desi()
+        {
+            Image = ImageManage.GetSImage("stageborder.png");
+            Color = Color.Blue;
+        }
+
+        public override void CalAllColl(Dictionary<string, StageObj> tempSO)
+        {
+            var keys = tempSO.Keys.ToArray();
+            foreach (var l in keys)
+            {
+                if (tempSO[l] is Wall && tempSO[l].NewSpace.Contains(NewSpace))
+                {
+                    Initialize();
+                }
+            }
+            base.CalAllColl(tempSO);
         }
     }
 }

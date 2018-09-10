@@ -27,7 +27,9 @@ namespace GameJam_26.Scene
         private Label label01;
         private Label label02;
         private Label label03;
-
+        private Panel plp;
+        private int plpshowtime = 60;
+        private int s_plpshowtime = 60;
 
         public PlayScene(string aName, GraphicsDevice aGraphicsDevice, BaseDisplay aParent, GameRun aGameRun) : base(aName, aGraphicsDevice, aParent, aGameRun)
         {
@@ -36,7 +38,9 @@ namespace GameJam_26.Scene
 
         public override void Initialize()
         {
+            plpshowtime = s_plpshowtime;
             label01.Text = "";
+            plp.Visible = false;
             base.Initialize();
         }
 
@@ -49,12 +53,13 @@ namespace GameJam_26.Scene
             label02.TextSize = 24f;
             label03 = new Label(graphicsDevice, this);
             label03.TextSize = 24f;
+            plp = new Panel(graphicsDevice, this);
             ShowStage = stages["Stage01"];
             ending = new Ending(graphicsDevice, this);
             ending.Size = new Size(size.Width * 4 / 5, size.Height * 2 / 3);
             ending.Location = (size / 2 - ending.Size / 2).ToPoint();
             backMenu = new BackMenu(graphicsDevice, this);
-            backMenu.Size = new Size(size.Width * 2 / 7, size.Height / 3);
+            backMenu.Size = new Size(size.Width * 2 / 7, size.Height * 3 / 7);
             backMenu.Location = (size / 2 - backMenu.Size / 2).ToPoint();
             base.PreLoadContent();
         }
@@ -73,29 +78,80 @@ namespace GameJam_26.Scene
                 label01.Text = $"残り：{t.Turn}ターン";
             else
             {
-                var it = (Item)t.stageObjs["item01"];
-                if (it.Owner != null)
+                Dictionary<string, object> ed = new Dictionary<string, object>();
+                int[] s = new int[2];
+                s[0] = 0; s[1] = 0;
+                var keys = t.stageObjs.Keys.ToArray();
+                foreach (var l in keys)
                 {
-                    int s = (int)it.Owner.Player.Index;
-                    label01.Text = $"ゲームオーバー、勝者{s}";
+                    if (t.stageObjs.ContainsKey(l) && t.stageObjs[l] is Item)
+                    {
+                        var it = (Item)t.stageObjs[l];
+                        if (it.Owner != null)
+                        {
+                            int temp = (int)it.Owner.Player.Index;
+                            s[temp]++;
+                        }
+                    }
+                }
+
+                if (s[0] > s[1])
+                {
+                    label01.Text = $"ゲームオーバー、勝者0";
+                    ed["winner"] = 0;
+                }
+                else if (s[1] > s[0])
+                {
+                    label01.Text = $"ゲームオーバー、勝者1";
+                    ed["winner"] = 1;
                 }
                 else
+                {
                     label01.Text = $"ゲームオーバー、引き分け";
+                    ed["winner"] = -1;
+                }
+                ending.ShowEnding(ed);
             }
             label02.Text = $"ターン残り時間：{(t.Timedown / 60.0f).ToString("00.00")}秒";
             label03.Text = $"プレイヤー{t.Pl_Index}のターン";
-            if (GameKeyboard.GetKeyTrigger(Keys.Escape))
+            if (GameKeyboard.GetKeyTrigger(Keys.Escape) || IGGamePad.GetKeyTrigger(PlayerIndex.One, Buttons.Back))
             {
                 backMenu.Visible = !backMenu.Visible;
             }
-            if (backMenu.Visible || ending.Visible)
+            if (backMenu.Visible || ending.Visible || plp.Visible)
             {
                 backMenu.Update(gameTime);
                 ending.Update(gameTime);
+                plp.Update(gameTime);
+                if (plp.Visible)
+                {
+                    if (plpshowtime > 0)
+                        plpshowtime--;
+                    else
+                    {
+                        plpshowtime = s_plpshowtime;
+                        plp.Visible = false;
+                    }
+                }
                 return;
             }
             base.Update(gameTime);
         }
 
+        public void ChangeTrun(int player)
+        {
+            switch (player)
+            {
+                case 0:
+                    plp.Image = ImageManage.GetSImage("player0.png");
+                    break;
+                case 1:
+                    plp.Image = ImageManage.GetSImage("player1.png");
+                    break;
+            }
+            plp.Size = Size.Parse(plp.Image.Image.Size);
+            plp.Location = ((size - plp.Size) / 2).ToPoint();
+            plp.Visible = true;
+        }
     }
 }

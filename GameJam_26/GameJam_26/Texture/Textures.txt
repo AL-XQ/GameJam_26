@@ -6,3 +6,10 @@
 <window.png:0>
 <conchara.png:0>
 <item.png:0>
+<1pWIN.png:0>
+<2pWIN.png:0>
+<draw.png:0>
+<yajirusi.png:0>
+<markbase.png:0>
+<player0.png:0>
+<player1.png:0>

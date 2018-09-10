@@ -11,6 +11,7 @@ using InfinityGame;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using InfinityGame.Device;
+using Microsoft.Xna.Framework.Input;
 
 namespace GameJam_26.Scene.UI
 {
@@ -19,6 +20,9 @@ namespace GameJam_26.Scene.UI
         private AnimeButton start;
         private AnimeButton credit;
         private AnimeButton exit;
+        private int index = 0;
+
+        private int Index { get => index; set => SetIndex(value); }
         public MainMenu(GraphicsDevice aGraphicsDevice, BaseDisplay parent) : base(aGraphicsDevice, parent)
         {
             canMove = false;
@@ -27,8 +31,44 @@ namespace GameJam_26.Scene.UI
             backColor = Color.Transparent;
         }
 
+        private void SetIndex(int value)
+        {
+            int t = value;
+            if (t == -1)
+                t = 2;
+            else if (t == 3)
+                t = 0;
+            switch (index)
+            {
+                case 0:
+                    start.OnLeave(null, null);
+                    break;
+                case 1:
+                    credit.OnLeave(null, null);
+                    break;
+                case 2:
+                    exit.OnLeave(null, null);
+                    break;
+            }
+            index = t;
+            switch (index)
+            {
+                case 0:
+                    start.OnEnter(null, null);
+                    break;
+                case 1:
+                    credit.OnEnter(null, null);
+                    break;
+                case 2:
+                    exit.OnEnter(null, null);
+                    break;
+            }
+
+        }
+
         public override void Initialize()
         {
+            Index = 0;
             base.Initialize();
         }
 
@@ -44,7 +84,7 @@ namespace GameJam_26.Scene.UI
             credit = new AnimeButton(graphicsDevice, this);
             exit = new AnimeButton(graphicsDevice, this);
 
-            start.Size = new Size(size.Width * 4 / 5, size.Height/ 4);
+            start.Size = new Size(size.Width * 4 / 5, size.Height / 4);
             credit.Size = start.Size;
             exit.Size = start.Size;
             start.Location = new Point(size.Width / 2 - start.Size.Width / 2, 30);
@@ -67,6 +107,36 @@ namespace GameJam_26.Scene.UI
             credit.Image = ImageManage.GetSImage("button01");
             exit.Image = ImageManage.GetSImage("button01");
             base.LoadContent();
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            if (visible)
+            {
+                if (IGGamePad.GetKeyTrigger(PlayerIndex.One, Buttons.DPadUp))
+                    Index--;
+                if (IGGamePad.GetKeyTrigger(PlayerIndex.One, Buttons.DPadDown))
+                    Index++;
+                if (IGGamePad.GetKeyTrigger(PlayerIndex.One, Buttons.Start))
+                    Enter();
+            }
+            base.Update(gameTime);
+        }
+
+        private void Enter()
+        {
+            switch (index)
+            {
+                case 0:
+                    start.OnClick(null, null);
+                    break;
+                case 1:
+                    credit.OnClick(null, null);
+                    break;
+                case 2:
+                    exit.OnClick(null, null);
+                    break;
+            }
         }
 
         private void Start(object sender, EventArgs e)

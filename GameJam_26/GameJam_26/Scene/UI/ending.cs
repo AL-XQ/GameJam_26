@@ -10,14 +10,19 @@ using Microsoft.Xna.Framework.Graphics;
 using InfinityGame.Element;
 using Microsoft.Xna.Framework;
 using InfinityGame;
+using InfinityGame.Device;
+
 namespace GameJam_26.Scene.UI
 {
     public class Ending : UIWindow
     {
-        private Label end;
+        private Panel end;
         public Ending(GraphicsDevice aGraphicsDevice, BaseDisplay parent) : base(aGraphicsDevice, parent)
         {
-            
+            BorderOn = false;
+            CanClose = false;
+            CanMove = false;
+            backColor = Color.Transparent;
         }
         public override void Initialize()
         {
@@ -31,18 +36,38 @@ namespace GameJam_26.Scene.UI
         }
         public override void PreLoadContent()
         {
-            end = new Label(graphicsDevice, this);
-            end.TextSize = 48f;
+            end = new Panel(graphicsDevice, this);
             end.Size = new Size(Size.Width * 4 / 5, Size.Height * 1 / 4);
+            end.BackColor = Color.Transparent;
             RegistEvent();
             base.PreLoadContent();
         }
         public override void LoadContent()
         {
             end.Location = new Point(size.Width / 2 - end.Size.Width / 2, 60);
-            end.Text = GetText("Ending");
-            end.TextAlign = ContentAlignment.MiddleCenter;
+            Image = ImageManage.GetSImage("window.png");
             base.LoadContent();
+        }
+
+        public void ShowEnding(Dictionary<string, object> args)
+        {
+            int w = (int)args["winner"];
+            switch(w)
+            {
+                case -1:
+                    end.Image = ImageManage.GetSImage("draw.png");
+                    break;
+                case 0:
+                    end.Image = ImageManage.GetSImage("1pWIN.png");
+                    break;
+                case 1:
+                    end.Image = ImageManage.GetSImage("2pWIN.png");
+                    break;
+                default:
+                    end.Image = ImageManage.GetSImage("draw.png");
+                    break;
+            }
+            visible = true;
         }
 
     }

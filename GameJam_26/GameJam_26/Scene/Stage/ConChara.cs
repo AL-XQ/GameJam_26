@@ -15,16 +15,23 @@ namespace GameJam_26.Scene.Stage
 {
     public class ConChara : Base_Chara, ICircle, ISpeed
     {
+        private float maxSpeed = 80f;
         private Player player;
         private Circle circle;
         private Base_Stage st;
-        private Item item;
+        private Dictionary<string, Item> items = new Dictionary<string, Item>();
         private Vector2 speed = Vector2.Zero;
         private bool skipColl = false;
+        private bool skipTrun = false;
+        private bool rndve = false;
         public Circle Circle { get => circle; set => circle = value; }
-        public Item Item { get => item; set => item = value; }
+        public Dictionary<string, Item> Items { get => items; }
         public Vector2 Speed { get => speed; set => speed = value; }
         public Player Player { get => player; }
+        public float MaxSpeed { get => maxSpeed; set => maxSpeed = value; }
+        public bool SkipTrun { get => skipTrun; set => skipTrun = value; }
+        public bool Rndve { get => rndve; set => rndve = value; }
+
         public ConChara(GraphicsDevice aGraphicsDevice, BaseDisplay aParent, string aName, Player player) : base(aGraphicsDevice, aParent, aName)
         {
             this.player = player;
@@ -72,12 +79,11 @@ namespace GameJam_26.Scene.Stage
                 {
                     if (((ConChara)tempSO[l]).player.Index != player.Index &&
                         st.Pl_Index == (int)player.Index &&
-                        ((ConChara)tempSO[l]).Item != null)
+                        ((ConChara)tempSO[l]).Items.Count > 0)
                     {
-
-                        var it = ((ConChara)tempSO[l]).Item;
+                        var it = ((ConChara)tempSO[l]).Items.First().Value;
                         it.SetOwner(null);
-                        it.RollDown(speed * 0.5f);
+                        it.RollDown(new Vector2(speed.X * 0.5f, speed.Length() * 0.5f));
                         st.Pl_Index = (int)player.Index + 2;
                     }
                 }
@@ -88,7 +94,7 @@ namespace GameJam_26.Scene.Stage
                 skipColl = false;
                 return;
             }
-            
+
             foreach (var l in keys)
             {
                 if (!tempSO.ContainsKey(l))

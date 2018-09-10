@@ -30,7 +30,11 @@ namespace GameJam_26.Scene.Stage
         {
             new Wall(graphicsDevice, this, "wall01");
             new Wall(graphicsDevice, this, "wall02");
-            
+            new Niddle(graphicsDevice, this, "niddle03");
+            new Item(graphicsDevice, this, "item01");
+            new Item(graphicsDevice, this, "item02");
+            new Item(graphicsDevice, this, "item03");
+            new PanicArea(graphicsDevice, this, "paa01");
             base.PreLoadContent();
         }
 
