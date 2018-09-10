@@ -23,7 +23,7 @@ namespace GameJam_26.Scene.Stage
         private List<ConChara> charas = new List<ConChara>();
         private int foucs;
         private StageField mark;
-        private Vector2 lastv = Vector2.Zero, nowv = Vector2.Zero;
+        public Vector2 lastv = Vector2.Zero, nowv = Vector2.Zero;
 
         public PlayerIndex Index { get => index; }
         public List<ConChara> Charas { get => charas; }
@@ -82,6 +82,12 @@ namespace GameJam_26.Scene.Stage
             mark.DrawOrder = 10;
         }
 
+        public void ResetV()
+        {
+            nowv = Vector2.Zero;
+            lastv = Vector2.Zero;
+        }
+
         public void FreeUpdate(GameTime gameTime)
         {
             mark.Coordinate = Foucs.Circle.Center + nowv * 100f - (mark.Size / 2).ToVector2();
@@ -90,7 +96,7 @@ namespace GameJam_26.Scene.Stage
         public bool Update(GameTime gameTime)
         {
             lastv = nowv;
-            nowv = IGGamePad.GetRightVelocity(index);
+            nowv = IGGamePad.GetLeftVelocity(index);
             if (nowv.Length() > 1f)
                 nowv.Normalize();
             if (IGGamePad.GetKeyTrigger(index, Buttons.DPadLeft) || IGGamePad.GetKeyTrigger(index, Buttons.DPadUp))
@@ -105,12 +111,11 @@ namespace GameJam_26.Scene.Stage
                 if (foucs == 3)
                     foucs = 0;
             }
-            if ((nowv - lastv).Length() >= 0.3f && nowv.Length() <= lastv.Length() && nowv.Length() < 0.1f)
+            if (nowv.Length() > 0.1f&&IGGamePad.GetKeyTrigger(index,Buttons.RightShoulder)/*(nowv - lastv).Length() >= 0.3f && nowv.Length() <= lastv.Length() && nowv.Length() < 0.1f*/)
             {
-                Vector2 f = nowv - lastv;
+                Vector2 f = -nowv;
                 Foucs.Speed = f * f * f * 80f;
-                lastv = Vector2.Zero;
-                nowv = Vector2.Zero;
+                ResetV();
                 return true;
             }
             /*if (IGGamePad.GetKeyTrigger(index, Buttons.A))

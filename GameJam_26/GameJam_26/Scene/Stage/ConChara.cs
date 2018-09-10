@@ -61,26 +61,42 @@ namespace GameJam_26.Scene.Stage
 
         public override void CalAllColl(Dictionary<string, StageObj> tempSO)
         {
+            var keys = tempSO.Keys.ToArray();
+            foreach (var l in keys)
+            {
+                if (!tempSO.ContainsKey(l))
+                {
+                    continue;
+                }
+                if (tempSO[l] is ConChara)
+                {
+                    if (((ConChara)tempSO[l]).player.Index != player.Index &&
+                        st.Pl_Index == (int)player.Index &&
+                        ((ConChara)tempSO[l]).Item != null)
+                    {
+
+                        var it = ((ConChara)tempSO[l]).Item;
+                        it.SetOwner(null);
+                        it.RollDown(speed * 0.5f);
+                        st.Pl_Index = (int)player.Index + 2;
+                    }
+                }
+            }
+
             if (skipColl)
             {
                 skipColl = false;
                 return;
             }
-            var keys = tempSO.Keys.ToArray();
+            
             foreach (var l in keys)
             {
                 if (!tempSO.ContainsKey(l))
+                {
                     continue;
+                }
                 if (tempSO[l] is ConChara)
                 {
-                    if (((ConChara)tempSO[l]).player.Index != player.Index &&
-                        st.Pl_Index == (int)player.Index &&
-                        ((ConChara)tempSO[l]).item != null)
-                    {
-                        var it = ((ConChara)tempSO[l]).item;
-                        it.SetOwner(null);
-                        it.RollDown(speed * 0.25f);
-                    }
                     Vector2 f = ((ConChara)tempSO[l]).Circle.Center - circle.Center;
                     f.Normalize();
                     Vector2 ss = speed - ((ConChara)tempSO[l]).speed;

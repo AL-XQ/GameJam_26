@@ -28,7 +28,8 @@ namespace GameJam_26.Scene.Stage
 
         public override void PreLoadContent()
         {
-            
+            new Wall(graphicsDevice, this, "wall01");
+            new Wall(graphicsDevice, this, "wall02");
             
             base.PreLoadContent();
         }

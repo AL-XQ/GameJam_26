@@ -24,14 +24,14 @@ namespace GameJam_26.Scene.Stage
         private int pl_index = 0;
         private Random rnd = new Random();
         private int timedown = 15 * 60;
-        private float resistance = 0.005f;
+        private float resistance = 0.008f;
         private float g_v = 2f;
         private bool gameOver = false;
 
         public List<ConChara> charas = new List<ConChara>();
         public List<Item> items = new List<Item>();
         public float runf = 0;
-        public int Pl_Index { get => pl_index; }
+        public int Pl_Index { get => pl_index; set => pl_index = value; }
         public int Turn { get => turn; }
         public int Timedown { get => timedown; }
         /// <summary>
@@ -130,20 +130,37 @@ namespace GameJam_26.Scene.Stage
         private void ChangeTurn()
         {
             timedown = 15 * 60;
+            ChangePlayer();
+            turn--;
+            turnstate = 0;
+        }
+
+        public void ChangePlayer()
+        {
             switch (pl_index)
             {
                 case 0:
+                    players[0].ResetV();
                     pl_index = 1;
                     break;
                 case 1:
+                    players[1].ResetV();
                     pl_index = 0;
                     break;
+                case 2:
+                    players[0].ResetV();
+                    pl_index = 0;
+                    break;
+                case 3:
+                    players[1].ResetV();
+                    pl_index = 1;
+                    break;
                 default:
+                    players[0].ResetV();
+                    players[1].ResetV();
                     pl_index = 0;
                     break;
             }
-            turn--;
-            turnstate = 0;
         }
     }
 }
