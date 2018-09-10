@@ -40,7 +40,7 @@ namespace GameJam_26.Scene.Stage
             rollDownLine = 0;
             rollDownSpeed = Vector2.Zero;
             speed = Vector2.Zero;
-            Coordinate = new Vector2(rnd.Next(IGConfig.screen.Width / 4, IGConfig.screen.Width * 3 / 4), rnd.Next(IGConfig.screen.Height / 4, IGConfig.screen.Height * 3 / 4));
+            //Coordinate = new Vector2(rnd.Next(IGConfig.screen.Width / 4, IGConfig.screen.Width * 3 / 4), rnd.Next(IGConfig.screen.Height / 4, IGConfig.screen.Height * 3 / 4));
             base.Initialize();
         }
 

@@ -50,7 +50,7 @@ namespace GameJam_26.Scene.Stage
 
         public void Initialize()
         {
-            if (index == 0)
+            /*if (index == 0)
             {
                 charas[0].Coordinate = new Vector2(IGConfig.screen.Height / 25 + 10, IGConfig.screen.Height / 25 + 10);
                 charas[1].Coordinate = new Vector2(IGConfig.screen.Height / 25 + 10, IGConfig.screen.Height / 2 - charas[1].Size.Height / 2);
@@ -61,7 +61,7 @@ namespace GameJam_26.Scene.Stage
                 charas[0].Coordinate = new Vector2(IGConfig.screen.Width - IGConfig.screen.Height / 25 - charas[0].Size.Width - 10, IGConfig.screen.Height / 25 + 10);
                 charas[1].Coordinate = new Vector2(IGConfig.screen.Width - IGConfig.screen.Height / 25 - charas[1].Size.Width - 10, IGConfig.screen.Height / 2 - charas[1].Size.Height / 2);
                 charas[2].Coordinate = new Vector2(IGConfig.screen.Width - IGConfig.screen.Height / 25 - charas[2].Size.Width - 10, IGConfig.screen.Height - IGConfig.screen.Height / 25 - charas[1].Size.Height - 10);
-            }
+            }*/
             foreach (var l in Charas)
             {
                 l.Color = Color.White;
@@ -90,6 +90,17 @@ namespace GameJam_26.Scene.Stage
 
         private void SetFoucs(int value)
         {
+            bool endtrun = true;
+            foreach(var l in charas)
+            {
+                if (!l.SkipTrun)
+                {
+                    endtrun = false;
+                    break;
+                }
+            }
+            if (endtrun)
+                return;
             if (value == -1)
                 foucs = 2;
             else if (value == 3)

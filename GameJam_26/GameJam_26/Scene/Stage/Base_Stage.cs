@@ -137,7 +137,8 @@ namespace GameJam_26.Scene.Stage
             ChangePlayer();
             turn--;
             turnstate = 0;
-            ((PlayScene)StageScene).ChangeTrun(pl_index);
+            if (turn > 0)
+                ((PlayScene)StageScene).ChangeTrun(pl_index);
         }
 
         public void ChangePlayer()

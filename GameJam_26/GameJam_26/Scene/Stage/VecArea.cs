@@ -14,14 +14,16 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace GameJam_26.Scene.Stage
 {
-    public class PanicArea : Block
+    public class VecArea : Block
     {
         private int S_T = 200;
         private int L_T = 500;
+        private Vector2 power = Vector2.Zero;
         private Random rnd = new Random();
-        private Dictionary<string, ConChara> pac = new Dictionary<string, ConChara>();
-        private Dictionary<string, ConChara> lastpac = new Dictionary<string, ConChara>();
-        public PanicArea(GraphicsDevice aGraphicsDevice, BaseDisplay aParent, string aName) : base(aGraphicsDevice, aParent, aName)
+
+        public Vector2 Power { get => power; set => power = value; }
+
+        public VecArea(GraphicsDevice aGraphicsDevice, BaseDisplay aParent, string aName) : base(aGraphicsDevice, aParent, aName)
         {
             IsCrimp = false;
             DrawOrder = 0;
@@ -42,22 +44,6 @@ namespace GameJam_26.Scene.Stage
             base.LoadContent();
         }
 
-        public override void Update(GameTime gameTime)
-        {
-            var keys1 = lastpac.Keys.ToArray();
-            foreach(var l in keys1)
-            {
-                if (pac.ContainsKey(l))
-                    lastpac[l].Rndve = true;
-                else
-                    lastpac[l].Rndve = false;
-            }
-            lastpac.Clear();
-            lastpac = new Dictionary<string, ConChara>(pac);
-            pac.Clear();
-            base.Update(gameTime);
-        }
-
         public override void CalAllColl(Dictionary<string, StageObj> tempSO)
         {
             var keys = tempSO.Keys.ToArray();
@@ -65,8 +51,7 @@ namespace GameJam_26.Scene.Stage
             {
                 if (tempSO[l] is ConChara)
                 {
-                    if (!pac.ContainsKey(l))
-                        pac.Add(l, (ConChara)tempSO[l]);
+                    ((ConChara)tempSO[l]).Speed += Power;
                 }
             }
             base.CalAllColl(tempSO);

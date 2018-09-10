@@ -25,10 +25,10 @@ namespace GameJam_26.Scene.Stage
 
         public override void Initialize()
         {
-            int x = rnd.Next(S_T, L_T);
+            /*int x = rnd.Next(S_T, L_T);
             int y = 300 - x;
             Size = new Size(x, y);
-            Coordinate = new Vector2(rnd.Next(IGConfig.screen.Width / 4, IGConfig.screen.Width * 3 / 4), rnd.Next(IGConfig.screen.Height / 4, IGConfig.screen.Height * 3 / 4));
+            Coordinate = new Vector2(rnd.Next(IGConfig.screen.Width / 4, IGConfig.screen.Width * 3 / 4), rnd.Next(IGConfig.screen.Height / 4, IGConfig.screen.Height * 3 / 4));*/
             base.Initialize();
         }
 
