@@ -21,7 +21,7 @@ namespace GameJam_26.Scene.Stage
         public float repul = 0.8f;
         public Base_Crimp(GraphicsDevice aGraphicsDevice, BaseDisplay aParent, string aName) : base(aGraphicsDevice, aParent, aName)
         {
-            DrawOrder = 2;
+            DrawOrder = 3;
         }
 
         public override void CalAllColl(Dictionary<string, StageObj> tempSO)

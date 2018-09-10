@@ -24,7 +24,7 @@ namespace GameJam_26.Scene.Stage
         public PanicArea(GraphicsDevice aGraphicsDevice, BaseDisplay aParent, string aName) : base(aGraphicsDevice, aParent, aName)
         {
             IsCrimp = false;
-            DrawOrder = 1;
+            DrawOrder = 0;
         }
 
         public override void Initialize()

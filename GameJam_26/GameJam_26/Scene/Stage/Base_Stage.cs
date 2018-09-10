@@ -69,6 +69,7 @@ namespace GameJam_26.Scene.Stage
             new StageBorder(graphicsDevice, this, "border_right");
             new StageBorder(graphicsDevice, this, "border_bottom");
             sf.Size = IGConfig.screen;
+            sf.DrawOrder = -1;
             stageObjs["border_top"].Size = new Size(sf.Size.Width, sf.Size.Height / 25);
             stageObjs["border_left"].Size = new Size(sf.Size.Height / 25, sf.Size.Height - sf.Size.Height * 2 / 25);//WidthをHeightのままにデザイン
             stageObjs["border_bottom"].Size = stageObjs["border_top"].Size;

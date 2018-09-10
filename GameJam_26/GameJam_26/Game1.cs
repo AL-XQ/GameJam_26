@@ -181,7 +181,7 @@ namespace GameJam_26
             if (IGConfig.isFullScreen)
             {
                 ChangeScreen.ChangeResolution(tempScreen.Width, tempScreen.Height);
-                graphicsDeviceManager.ToggleFullScreen();
+                //graphicsDeviceManager.ToggleFullScreen();
             }
             gameRun.IsGameRun = false;
             Thread.Sleep(500);

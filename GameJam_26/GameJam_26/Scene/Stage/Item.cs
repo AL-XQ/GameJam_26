@@ -29,7 +29,7 @@ namespace GameJam_26.Scene.Stage
         public Item(GraphicsDevice aGraphicsDevice, BaseDisplay aParent, string aName) : base(aGraphicsDevice, aParent, aName)
         {
             IsCrimp = false;
-            DrawOrder = 2;
+            DrawOrder = 3;
             st = (Base_Stage)Stage;
             st.items.Add(this);
         }
@@ -99,7 +99,7 @@ namespace GameJam_26.Scene.Stage
                     rollDownSpeed.X -= rollDownSpeed.X * st.Resistance * 20;//着地している状態のみ、抵抗力が発生する、そしてYの運動は高さの表現、Yの抵抗力は別で計算する。
                     float my = Math.Abs(rollDownSpeed.Y);
                     if (my > st.G_V)
-                        rollDownSpeed.Y = -my * 2 / 3;
+                        rollDownSpeed.Y = -my * 4 / 5;
                     else
                         rollDownSpeed.Y = 0;
                 }
@@ -132,7 +132,7 @@ namespace GameJam_26.Scene.Stage
                         if (tempSO[l] is ConChara)
                         {
                             var c = (ConChara)tempSO[l];
-                            if (((int)c.Player.Index == st.Pl_Index || (int)c.Player.Index == st.Pl_Index - 2) && c.Player.Foucs.Name == c.Name)
+                            if (((int)c.Player.Index == st.Pl_Index || (int)c.Player.Index == st.Pl_Index - 2) && c.Player.Foucs.Name == c.Name && c.Items.Count < 1)
                             {
                                 SetOwner(c);
                             }

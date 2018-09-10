@@ -38,6 +38,7 @@ namespace GameJam_26.Scene.Stage
             IsCrimp = true;
             st = (Base_Stage)Stage;
             st.charas.Add(this);
+            DrawOrder = 2;
         }
 
         public override void Initialize()
@@ -83,7 +84,7 @@ namespace GameJam_26.Scene.Stage
                     {
                         var it = ((ConChara)tempSO[l]).Items.First().Value;
                         it.SetOwner(null);
-                        it.RollDown(new Vector2(speed.X * 0.5f, speed.Length() * 0.5f));
+                        it.RollDown(new Vector2(speed.X * 0.5f, speed.Length() * 0.7f));
                         st.Pl_Index = (int)player.Index + 2;
                     }
                 }
@@ -115,11 +116,6 @@ namespace GameJam_26.Scene.Stage
                     speed += -nspeed;
                     ((ConChara)tempSO[l]).skipColl = true;
                 }
-                //else if (tempSO[l] is Item)
-                //{
-                //    ((Item)tempSO[l]).Speed = speed * 0.4f;
-                //    speed *= 0.2f;
-                //}
             }
             base.CalAllColl(tempSO);
         }
