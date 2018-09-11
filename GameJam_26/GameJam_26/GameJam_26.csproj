@@ -64,6 +64,7 @@
     <Compile Include="Scene\Load_Scene.cs" />
     <Compile Include="Scene\PlayScene.cs" />
     <Compile Include="Scene\Stage\Base_Crimp.cs" />
+    <Compile Include="Scene\Stage\BendingArea.cs" />
     <Compile Include="Scene\Stage\ISpeed.cs" />
     <Compile Include="Scene\Stage\Item.cs" />
     <Compile Include="Scene\Stage\Base_Stage.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Scene\Stage\PanicArea.cs" />
     <Compile Include="Scene\Stage\Player.cs" />
     <Compile Include="Scene\Stage\Stage01.cs" />
+    <Compile Include="Scene\Stage\Stage02.cs" />
     <Compile Include="Scene\Stage\StageBorder.cs" />
     <Compile Include="Scene\Stage\VecArea.cs" />
     <Compile Include="Scene\Stage\Wall.cs" />
