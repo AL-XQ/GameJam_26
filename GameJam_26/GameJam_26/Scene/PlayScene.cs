@@ -28,8 +28,8 @@ namespace GameJam_26.Scene
         private Label label02;
         private Label label03;
         private Panel plp;
-        private int plpshowtime = 60;
-        private int s_plpshowtime = 60;
+        private int plpshowtime = 120;
+        private int s_plpshowtime = 120;
 
         public PlayScene(string aName, GraphicsDevice aGraphicsDevice, BaseDisplay aParent, GameRun aGameRun) : base(aName, aGraphicsDevice, aParent, aGameRun)
         {
@@ -112,7 +112,7 @@ namespace GameJam_26.Scene
                 }
                 ending.ShowEnding(ed);
             }
-            label02.Text = $"ターン残り時間：{(t.Timedown / 60.0f).ToString("00.00")}秒";
+            label02.Text = $"ターン残り時間：{(t.Timedown / 120.0f).ToString("00.00")}秒";
             label03.Text = $"プレイヤー{t.Pl_Index}のターン";
             if (GameKeyboard.GetKeyTrigger(Keys.Escape) || IGGamePad.GetKeyTrigger(PlayerIndex.One, Buttons.Back))
             {

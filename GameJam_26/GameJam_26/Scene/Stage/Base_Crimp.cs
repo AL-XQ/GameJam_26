@@ -21,7 +21,7 @@ namespace GameJam_26.Scene.Stage
         public float repul = 0.8f;
         public Base_Crimp(GraphicsDevice aGraphicsDevice, BaseDisplay aParent, string aName) : base(aGraphicsDevice, aParent, aName)
         {
-            DrawOrder = 3;
+            DrawOrder = 4;
         }
 
         public override void CalAllColl(Dictionary<string, StageObj> tempSO)
@@ -37,27 +37,56 @@ namespace GameJam_26.Scene.Stage
                         var c = t.Circle;
                         if (c.Center.X < Coordinate.X && c.Center.Y < Coordinate.Y)
                         {
-                            float X = -Math.Abs(t.Speed.X) * repul;
-                            float Y = -Math.Abs(t.Speed.Y) * repul;
-                            t.Speed = new Vector2(X, Y);
+                            Vector2 ll = c.Center - Coordinate;
+                            ll.Normalize();
+                            Vector2 r = -t.Speed;
+                            r.Normalize();
+                            float l_l = Vector2.Dot(r, ll);
+                            ll *= l_l;
+                            Vector2 nn = ll - r;
+                            Vector2 nsn = r + 2 * nn;
+                            Vector2 ns = nsn * t.Speed.Length();
+                            t.Speed = ns;
+
                         }
                         else if (c.Center.X > Coordinate.X + size.Width && c.Center.Y < Coordinate.Y)
                         {
-                            float X = Math.Abs(t.Speed.X) * repul;
-                            float Y = -Math.Abs(t.Speed.Y) * repul;
-                            t.Speed = new Vector2(X, Y);
+                            Vector2 ll = c.Center - (Coordinate + new Vector2(size.Width, 0));
+                            ll.Normalize();
+                            Vector2 r = -t.Speed;
+                            r.Normalize();
+                            float l_l = Vector2.Dot(r, ll);
+                            ll *= l_l;
+                            Vector2 nn = ll - r;
+                            Vector2 nsn = r + 2 * nn;
+                            Vector2 ns = nsn * t.Speed.Length();
+                            t.Speed = ns;
                         }
                         else if (c.Center.X > Coordinate.X + size.Width && c.Center.Y > Coordinate.Y + size.Height)
                         {
-                            float X = Math.Abs(t.Speed.X) * repul;
-                            float Y = Math.Abs(t.Speed.Y) * repul;
-                            t.Speed = new Vector2(X, Y);
+                            Vector2 ll = c.Center - (Coordinate + size.ToVector2());
+                            ll.Normalize();
+                            Vector2 r = -t.Speed;
+                            r.Normalize();
+                            float l_l = Vector2.Dot(r, ll);
+                            ll *= l_l;
+                            Vector2 nn = ll - r;
+                            Vector2 nsn = r + 2 * nn;
+                            Vector2 ns = nsn * t.Speed.Length();
+                            t.Speed = ns;
                         }
                         else if (c.Center.X < Coordinate.X && c.Center.Y > Coordinate.Y + size.Height)
                         {
-                            float X = -Math.Abs(t.Speed.X) * repul;
-                            float Y = Math.Abs(t.Speed.Y) * repul;
-                            t.Speed = new Vector2(X, Y);
+                            Vector2 ll = c.Center - (Coordinate + new Vector2(0, size.Height));
+                            ll.Normalize();
+                            Vector2 r = -t.Speed;
+                            r.Normalize();
+                            float l_l = Vector2.Dot(r, ll);
+                            ll *= l_l;
+                            Vector2 nn = ll - r;
+                            Vector2 nsn = r + 2 * nn;
+                            Vector2 ns = nsn * t.Speed.Length();
+                            t.Speed = ns;
                         }
                         else if (c.Center.X < Coordinate.X)
                         {

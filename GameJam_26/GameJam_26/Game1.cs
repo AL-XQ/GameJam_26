@@ -149,7 +149,7 @@ namespace GameJam_26
             //}
 
             // この下に更新ロジックを記述
-            gameRun.Update(gameTime);
+            gameRun.MoreUpdate(gameTime, 2);
 
             // この上にロジックを記述
             base.Update(gameTime); // 親クラスの更新処理呼び出し。絶対に消すな！！

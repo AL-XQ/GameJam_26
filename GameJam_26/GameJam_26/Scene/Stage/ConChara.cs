@@ -15,7 +15,7 @@ namespace GameJam_26.Scene.Stage
 {
     public class ConChara : Base_Chara, ICircle, ISpeed
     {
-        private float maxSpeed = 80f;
+        private float maxSpeed = 40f;
         private Player player;
         private Circle circle;
         private Base_Stage st;
@@ -43,6 +43,8 @@ namespace GameJam_26.Scene.Stage
 
         public override void Initialize()
         {
+            skipTrun = false;
+            rndve = false;
             color = player.CharaColor;
             speed = Vector2.Zero;
             skipColl = false;
@@ -52,8 +54,8 @@ namespace GameJam_26.Scene.Stage
         public override void LoadContent()
         {
             Image = ImageManage.GetSImage("conchara.png");
-            Size = Size.Parse(image.Image.Size);
-            circle = new Circle(this, 50);
+            Size = Size.Parse(image.Image.Size) * 4 / 5;
+            circle = new Circle(this, Size.Width / 2);
             base.LoadContent();
         }
 

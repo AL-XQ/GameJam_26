@@ -111,6 +111,11 @@ namespace GameJam_26.Scene.Stage
                 _Foucs++;
         }
 
+        public void CheckFoucs()
+        {
+            _Foucs = _Foucs;
+        }
+
         public void ResetV()
         {
             nowv = Vector2.Zero;
@@ -129,8 +134,8 @@ namespace GameJam_26.Scene.Stage
                 mark.Visible = false;
             else
                 mark.Visible = true;
-            if (Foucs.SkipTrun)
-                _Foucs++;
+            /*if (Foucs.SkipTrun)
+                _Foucs++;*/
         }
 
         public bool Update(GameTime gameTime)

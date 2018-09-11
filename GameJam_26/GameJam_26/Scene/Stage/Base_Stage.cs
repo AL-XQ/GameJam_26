@@ -23,9 +23,9 @@ namespace GameJam_26.Scene.Stage
         private List<Player> players = new List<Player>();
         private int pl_index = 0;
         private Random rnd = new Random();
-        private int timedown = 15 * 60;
-        private int t_timedown = 15 * 60;
-        private float resistance = 0.008f;
+        private int timedown = 15 * 120;
+        private int t_timedown = 15 * 120;
+        private float resistance = 0.004f;
         private float g_v = 2f;
         private bool gameOver = false;
 
@@ -143,30 +143,9 @@ namespace GameJam_26.Scene.Stage
 
         public void ChangePlayer()
         {
-            switch (pl_index)
-            {
-                case 0:
-                    players[0].ResetV();
-                    pl_index = 1;
-                    break;
-                case 1:
-                    players[1].ResetV();
-                    pl_index = 0;
-                    break;
-                case 2:
-                    players[0].ResetV();
-                    pl_index = 0;
-                    break;
-                case 3:
-                    players[1].ResetV();
-                    pl_index = 1;
-                    break;
-                default:
-                    players[0].ResetV();
-                    players[1].ResetV();
-                    pl_index = 0;
-                    break;
-            }
+            players[pl_index % 2].ResetV();
+            players[pl_index % 2].CheckFoucs();
+            pl_index = (pl_index % 2 + 1) % 2;
         }
     }
 }
