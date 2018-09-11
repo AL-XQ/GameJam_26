@@ -26,12 +26,12 @@ namespace GameJam_26.Scene.Stage
         private int timedown = 15 * 120;
         private int t_timedown = 15 * 120;
         private float resistance = 0.004f;
-        private float g_v = 2f;
+        private float g_v = 1f;
         private bool gameOver = false;
 
         public List<ConChara> charas = new List<ConChara>();
         public List<Item> items = new List<Item>();
-        public float runf = 0;
+        public bool run = false;
         public int Pl_Index { get => pl_index; set => pl_index = value; }
         public int Turn { get => turn; }
         public int Timedown { get => timedown; }
@@ -50,6 +50,7 @@ namespace GameJam_26.Scene.Stage
         }
         public override void Initialize()
         {
+            run = false;
             turn = 12;
             turnstate = 0;
             gameOver = false;
@@ -98,16 +99,29 @@ namespace GameJam_26.Scene.Stage
 
         public override void Update(GameTime gameTime)
         {
+            if (StageScene.ShowStage.Name != Name)
+                return;
             if (!gameOver)
             {
-                runf = 0;
+                run = false;
                 foreach (var l in charas)
                 {
-                    runf += l.Speed.Length();
+                    if (l.Run)
+                    {
+                        run = true;
+                        break;
+                    }
                 }
-                foreach (var l in items)
+                if (!run)
                 {
-                    runf += l.Speed.Length();
+                    foreach (var l in items)
+                    {
+                        if (l.Run)
+                        {
+                            run = true;
+                            break;
+                        }
+                    }
                 }
                 if (turnstate == 0)
                 {
@@ -119,8 +133,10 @@ namespace GameJam_26.Scene.Stage
                         turnstate = 1;
                     }
                 }
-                else if (turnstate == 1 && runf == 0)
+                else if (turnstate == 1 && !run)
+                {
                     ChangeTurn();
+                }
                 if (turn <= 0)
                     gameOver = true;
             }

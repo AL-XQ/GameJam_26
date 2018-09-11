@@ -77,7 +77,6 @@
     <Compile Include="Scene\Stage\Stage01.cs" />
     <Compile Include="Scene\Stage\Stage02.cs" />
     <Compile Include="Scene\Stage\StageBorder.cs" />
-    <Compile Include="Scene\Stage\VecArea.cs" />
     <Compile Include="Scene\Stage\Wall.cs" />
     <Compile Include="Scene\TitleScene.cs" />
     <Compile Include="Scene\UI\BackMenu.cs" />

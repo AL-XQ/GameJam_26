@@ -76,7 +76,7 @@ namespace GameJam_26.Scene
 
         public override void Update(GameTime gameTime)
         {
-            var t = ((Base_Stage)stages["Stage01"]);
+            var t = (Base_Stage)ShowStage;
             if (t.Turn > 0)
                 label01.Text = $"残り：{t.Turn}ターン";
             else

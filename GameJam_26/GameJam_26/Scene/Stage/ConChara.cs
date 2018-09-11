@@ -24,6 +24,7 @@ namespace GameJam_26.Scene.Stage
         private bool skipColl = false;
         private bool skipTrun = false;
         private bool rndve = false;
+        private bool run = false;
         public Circle Circle { get => circle; set => circle = value; }
         public Dictionary<string, Item> Items { get => items; }
         public Vector2 Speed { get => speed; set => speed = value; }
@@ -31,6 +32,7 @@ namespace GameJam_26.Scene.Stage
         public float MaxSpeed { get => maxSpeed; set => maxSpeed = value; }
         public bool SkipTrun { get => skipTrun; set => skipTrun = value; }
         public bool Rndve { get => rndve; set => rndve = value; }
+        public bool Run { get => run; }
 
         public ConChara(GraphicsDevice aGraphicsDevice, BaseDisplay aParent, string aName, Player player) : base(aGraphicsDevice, aParent, aName)
         {
@@ -43,6 +45,7 @@ namespace GameJam_26.Scene.Stage
 
         public override void Initialize()
         {
+            run = false;
             skipTrun = false;
             rndve = false;
             color = player.CharaColor;
@@ -61,10 +64,17 @@ namespace GameJam_26.Scene.Stage
 
         public override void Update(GameTime gameTime)
         {
-            AddVelocity(speed, VeloParam.Run);
-            speed -= speed * st.Resistance;
-            if (speed.Length() <= 0.1f)
+            run = false;
+            if (speed.Length() != 0)
+            {
+                AddVelocity(speed, VeloParam.Run);
+                speed -= speed * st.Resistance;
+                run = true;
+            }
+            if (speed.Length() <= 0.05f)
+            {
                 speed = Vector2.Zero;
+            }
             base.Update(gameTime);
             skipColl = false;
         }

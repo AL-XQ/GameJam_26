@@ -31,14 +31,14 @@ namespace GameJam_26.Scene.Stage
         {
             /*Size = new Size(rnd.Next(S_T, L_T), rnd.Next(S_T, S_T));
             Coordinate = new Vector2(rnd.Next(IGConfig.screen.Width / 4, IGConfig.screen.Width * 3 / 4), rnd.Next(IGConfig.screen.Height / 4, IGConfig.screen.Height * 3 / 4));*/
-            Color = Color.Red;
+            
             base.Initialize();
         }
 
         public override void LoadContent()
         {
             Image = ImageManage.GetSImage("stageborder.png");
-            Color = Color.Yellow;
+            Color = Color.Red;
             base.LoadContent();
         }
 

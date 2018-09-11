@@ -23,9 +23,11 @@ namespace GameJam_26.Scene.Stage
         private Random rnd = new Random();
         private float rollDownLine = 0;
         private Vector2 rollDownSpeed = Vector2.Zero;
+        private bool run = false;
 
         public ConChara Owner { get => owner; }
         public Vector2 Speed { get => speed; set => speed = value; }
+        public bool Run { get => run; }
         public Item(GraphicsDevice aGraphicsDevice, BaseDisplay aParent, string aName) : base(aGraphicsDevice, aParent, aName)
         {
             IsCrimp = false;
@@ -36,6 +38,7 @@ namespace GameJam_26.Scene.Stage
 
         public override void Initialize()
         {
+            run = false;
             SetOwner(null);
             rollDownLine = 0;
             rollDownSpeed = Vector2.Zero;
@@ -74,6 +77,7 @@ namespace GameJam_26.Scene.Stage
 
         public override void Update(GameTime gameTime)
         {
+            run = false;
             if (owner != null)
             {
                 speed = Vector2.Zero;
@@ -82,17 +86,27 @@ namespace GameJam_26.Scene.Stage
             }
             else
             {
-                AddVelocity(speed, VeloParam.Run);
-                speed -= speed * st.Resistance;
-                if (speed.Length() <= 0.1f)
+                if (speed.Length() != 0)
+                {
+                    AddVelocity(speed, VeloParam.Run);
+                    speed -= speed * st.Resistance;
+                    run = true;
+                }
+                if (speed.Length() <= 0.05f)
+                {
                     speed = Vector2.Zero;
+                }
             }
             if (rollDownLine != 0)
             {
-                AddVelocity(rollDownSpeed, VeloParam.Run);
+                if (rollDownSpeed.Length() != 0)
+                {
+                    AddVelocity(rollDownSpeed, VeloParam.Run);
+                    run = true;
+                }
                 if (Coordinate.Y < rollDownLine)
                     rollDownSpeed += new Vector2(0, st.G_V);
-                if (rollDownSpeed.Length() <= 0.1f)
+                if (rollDownSpeed.Length() <= 0.05f)
                     rollDownSpeed = Vector2.Zero;
                 if (Coordinate.Y >= rollDownLine)
                 {

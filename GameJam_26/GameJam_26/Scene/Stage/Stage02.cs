@@ -26,17 +26,18 @@ namespace GameJam_26.Scene.Stage
             Size ms = sc;
             int sp = ms.Height / 25;
             ms -= new Size(sp * 2, sp * 2);
-            Size size0 = new Size(ms.Width/12  , ms.Height /12);//横と縦を12分　トゲと壁
-            Size size1 = new Size(size0.Width, size0.Height * 2);//パニックエリア
-            Size size2 = new Size(size0.Width , size0.Height*11);//ベンディングエリア
-            Size size3 = new Size(size0.Width/2, size0.Height * 2);
+            Vector2 size_b = new Vector2(ms.Width / 12f, ms.Height / 12f);//横と縦を12分
+            Size size0 = new Size((int)size_b.X, (int)size_b.Y);//横と縦を12分　トゲと壁
+            Size size1 = new Size((int)size_b.X, (int)size_b.Y * 2);//パニックエリア
+            Size size2 = new Size((int)size_b.X, (int)size_b.Y * 11);//ベンディングエリア
+            Size size3 = new Size((int)size_b.X / 2, (int)size_b.Y * 2);
 
             stageObjs["wall00"].Size = size3;
             stageObjs["wall01"].Size = size3;
             stageObjs["niddle00"].Size = size0;
             stageObjs["niddle01"].Size = size0;
 
-            
+
             stageObjs["panicarea00"].Size = size1;
             stageObjs["panicarea01"].Size = size1;
             stageObjs["panicarea02"].Size = size1;
@@ -45,33 +46,36 @@ namespace GameJam_26.Scene.Stage
             stageObjs["bendingarea00"].Size = size2;
             stageObjs["bendingarea01"].Size = size2;
 
-            stageObjs["wall00"].Coordinate = new Vector2(sp + 0.75f * size0.Width, sp + 5.0f * size0.Height);
-            stageObjs["wall01"].Coordinate = new Vector2(sp + 10.75f * size0.Width, sp + 5.0f * size0.Height);
-            stageObjs["niddle00"].Coordinate = new Vector2(sp + 5.525f * size0.Width, sp + 0.75f * size0.Height);
-            stageObjs["niddle01"].Coordinate = new Vector2(sp + 5.525f * size0.Width, sp + 10.4f * size0.Height);
+            stageObjs["wall00"].Coordinate = new Vector2(sp + 0.75f * size_b.X, sp + 5.0f * size_b.Y);
+            stageObjs["wall01"].Coordinate = new Vector2(sp + 10.75f * size_b.X, sp + 5.0f * size_b.Y);
+            stageObjs["niddle00"].Coordinate = new Vector2(sp + 5.525f * size_b.X, sp + 0.75f * size_b.Y);
+            stageObjs["niddle01"].Coordinate = new Vector2(sp + 5.525f * size_b.X, sp + 10.4f * size_b.Y);
 
 
-            stageObjs["panicarea00"].Coordinate = new Vector2(sp + 0.5f * size0.Width, sp + 1.6f * size0.Height);
-            stageObjs["panicarea01"].Coordinate = new Vector2(sp + 0.5f * size0.Width, sp + 8.5f * size0.Height);
-            stageObjs["panicarea02"].Coordinate = new Vector2(sp + 10.5f * size0.Width, sp + 1.6f * size0.Height);
-            stageObjs["panicarea03"].Coordinate = new Vector2(sp + 10.5f * size0.Width, sp + 8.5f * size0.Height);
+            stageObjs["panicarea00"].Coordinate = new Vector2(sp + 0.5f * size_b.X, sp + 1.6f * size_b.Y);
+            stageObjs["panicarea01"].Coordinate = new Vector2(sp + 0.5f * size_b.X, sp + 8.5f * size_b.Y);
+            stageObjs["panicarea02"].Coordinate = new Vector2(sp + 10.5f * size_b.X, sp + 1.6f * size_b.Y);
+            stageObjs["panicarea03"].Coordinate = new Vector2(sp + 10.5f * size_b.X, sp + 8.5f * size_b.Y);
 
-            stageObjs["bendingarea00"].Coordinate = new Vector2(sp + 2f * size0.Width, sp + 0.59f * size0.Height);
-            stageObjs["bendingarea01"].Coordinate = new Vector2(sp + 9f * size0.Width, sp + 0.59f * size0.Height);
+            stageObjs["bendingarea00"].Coordinate = new Vector2(sp + 2f * size_b.X, sp + 0.59f * size_b.Y);
+            stageObjs["bendingarea01"].Coordinate = new Vector2(sp + 9f * size_b.X, sp + 0.59f * size_b.Y);
 
-            stageObjs["item00"].Coordinate = new Vector2(sp + 0.7f * size0.Width, sp + 0.25f * size0.Height);
-            stageObjs["item01"].Coordinate = new Vector2(sp + 0.7f * size0.Width, sp + 10.5f * size0.Height);
-            stageObjs["item02"].Coordinate = new Vector2(sp + 10.7f * size0.Width, sp + 0.25f * size0.Height);
-            stageObjs["item03"].Coordinate = new Vector2(sp + 10.7f * size0.Width, sp + 10.5f * size0.Height);
-            stageObjs["item04"].Coordinate = new Vector2(sp + 5.725f * size0.Width, sp + 5.25f * size0.Height);
+            stageObjs["item00"].Coordinate = new Vector2(sp + 0.7f * size_b.X, sp + 0.25f * size_b.Y);
+            stageObjs["item01"].Coordinate = new Vector2(sp + 0.7f * size_b.X, sp + 10.5f * size_b.Y);
+            stageObjs["item02"].Coordinate = new Vector2(sp + 10.7f * size_b.X, sp + 0.25f * size_b.Y);
+            stageObjs["item03"].Coordinate = new Vector2(sp + 10.7f * size_b.X, sp + 10.5f * size_b.Y);
+            stageObjs["item04"].Coordinate = new Vector2(sp + 5.725f * size_b.X, sp + 5.25f * size_b.Y);
 
-            stageObjs["One_0"].Coordinate = new Vector2(sp + 4.5f * size0.Width, sp + 5.25f * size0.Height);
-            stageObjs["One_1"].Coordinate = new Vector2(sp + 4.75f * size0.Width, sp + 5f * size0.Height);
-            stageObjs["One_2"].Coordinate = new Vector2(sp + 4.75f * size0.Width, sp + 7f * size0.Height);
+            stageObjs["One_0"].Coordinate = new Vector2(sp + 4.75f * size_b.X, sp + 4.0f * size_b.Y);
+            stageObjs["One_1"].Coordinate = new Vector2(sp + 4.5f * size_b.X, sp + 5.25f * size_b.Y);
+            stageObjs["One_2"].Coordinate = new Vector2(sp + 4.75f * size_b.X, sp + 6.5f * size_b.Y);
 
-            stageObjs["Two_0"].Coordinate = new Vector2(sp + 6.25f * size0.Width, sp + 5.25f * size0.Height);
-            stageObjs["Two_1"].Coordinate = new Vector2(sp + 6.5f * size0.Width, sp + 5f * size0.Height);
-            stageObjs["Two_2"].Coordinate = new Vector2(sp + 6.5f * size0.Width, sp + 7f * size0.Height);
+            stageObjs["Two_0"].Coordinate = new Vector2(sp + 6.75f * size_b.X, sp + 4.0f * size_b.Y);
+            stageObjs["Two_1"].Coordinate = new Vector2(sp + 7f * size_b.X, sp + 5.25f * size_b.Y);
+            stageObjs["Two_2"].Coordinate = new Vector2(sp + 6.75f * size_b.X, sp + 6.5f * size_b.Y);
+
+            ((BendingArea)stageObjs["bendingarea00"]).Power = new Vector2(1, 0);
+            ((BendingArea)stageObjs["bendingarea01"]).Power = new Vector2(-1, 0);
 
             base.Initialize();
         }
@@ -79,18 +83,18 @@ namespace GameJam_26.Scene.Stage
         {
             new Wall(graphicsDevice, this, "wall00");
             new Wall(graphicsDevice, this, "wall01");
-            
+
             new Niddle(graphicsDevice, this, "niddle00");
             new Niddle(graphicsDevice, this, "niddle01");
-           
+
 
             new PanicArea(graphicsDevice, this, "panicarea00");
             new PanicArea(graphicsDevice, this, "panicarea01");
             new PanicArea(graphicsDevice, this, "panicarea02");
             new PanicArea(graphicsDevice, this, "panicarea03");
 
-            new PanicArea(graphicsDevice, this, "bendingarea00");
-            new PanicArea(graphicsDevice, this, "bendingarea01");
+            new BendingArea(graphicsDevice, this, "bendingarea00");
+            new BendingArea(graphicsDevice, this, "bendingarea01");
 
             new Item(graphicsDevice, this, "item00");
             new Item(graphicsDevice, this, "item01");
