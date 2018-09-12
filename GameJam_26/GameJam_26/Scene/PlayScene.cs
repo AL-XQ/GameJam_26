@@ -109,12 +109,12 @@ namespace StrikeWars.Scene
 
                 if (s[0] > s[1])
                 {
-                    label01.Text = $"ゲームオーバー、勝者0";
+                    label01.Text = $"ゲームオーバー、勝者1";
                     ed["winner"] = 0;
                 }
                 else if (s[1] > s[0])
                 {
-                    label01.Text = $"ゲームオーバー、勝者1";
+                    label01.Text = $"ゲームオーバー、勝者2";
                     ed["winner"] = 1;
                 }
                 else
@@ -125,7 +125,7 @@ namespace StrikeWars.Scene
                 ending.ShowEnding(ed);
             }
             label02.Text = $"ターン残り時間：{(t.Timedown / 120.0f).ToString("00.00")}秒";
-            label03.Text = $"プレイヤー{t.Pl_Index}のターン";
+            label03.Text = $"プレイヤー{t.Pl_Index + 1}のターン";
             if (GameKeyboard.GetKeyTrigger(Keys.Escape) || IGGamePad.GetKeyTrigger(PlayerIndex.One, Buttons.Back))
             {
                 backMenu.Visible = !backMenu.Visible;

@@ -3,3 +3,4 @@
 <st.wav:0>
 <start.wav:0>
 <turn.wav:0>
+<kk.wav:0>

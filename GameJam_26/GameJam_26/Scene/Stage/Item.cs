@@ -67,7 +67,7 @@ namespace StrikeWars.Scene.Stage
             {
                 owner.Items.Add(Name, this);
                 if (owner.Player.Index == 0)
-                    owner.Color = Color.Green;
+                    owner.Color = Color.YellowGreen;
                 else
                     owner.Color = Color.Yellow;
                 visible = false;

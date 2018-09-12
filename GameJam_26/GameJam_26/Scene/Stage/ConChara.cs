@@ -63,6 +63,8 @@ namespace StrikeWars.Scene.Stage
             circle = new Circle(this, Size.Width / 2);
             ct = new Vector2(image.Image.Size.Width / 2, image.Image.Size.Height / 2);
             cp = Size.Parse(image.Image.Size).ToPoint();
+            sounds.Add("kk", SoundManage.GetSound("kk.wav"));
+            sounds["kk"].SetSELoopPlay(false);
             base.LoadContent();
         }
 
@@ -140,6 +142,8 @@ namespace StrikeWars.Scene.Stage
                     ((ConChara)tempSO[l]).speed += nspeed;
                     speed += -nspeed;
                     ((ConChara)tempSO[l]).skipColl = true;
+                    Sound sk = new Sound(sounds["kk"].SE);
+                    sk.Play();
                 }
             }
             base.CalAllColl(tempSO);
