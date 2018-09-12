@@ -161,7 +161,17 @@ namespace StrikeWars.Scene.Stage
         {
             players[pl_index % 2].ResetV();
             players[pl_index % 2].CheckFoucs();
-            pl_index = (pl_index % 2 + 1) % 2;
+            switch (pl_index)
+            {
+                case 0:
+                case 3:
+                    pl_index = 1;
+                    break;
+                case 1:
+                case 2:
+                    pl_index = 0;
+                    break;
+            }
         }
     }
 }

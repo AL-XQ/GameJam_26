@@ -149,7 +149,7 @@ namespace StrikeWars.Scene.Stage
                         if (tempSO[l] is ConChara)
                         {
                             var c = (ConChara)tempSO[l];
-                            if (((int)c.Player.Index == st.Pl_Index || (int)c.Player.Index == st.Pl_Index - 2) && c.Player.Foucs.Name == c.Name && c.Items.Count < 1)
+                            if (/*((int)c.Player.Index == st.Pl_Index % 2 || (int)c.Player.Index == st.Pl_Index - 2)*/ /*&& c.Player.Foucs.Name == c.Name &&*/ c.Items.Count < 1)
                             {
                                 SetOwner(c);
                             }

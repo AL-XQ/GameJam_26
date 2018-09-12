@@ -67,6 +67,10 @@ namespace StrikeWars.Scene.UI
             {
                 case -1:
                     end.Image = ImageManage.GetSImage("draw.png");
+                    for (int i = 0; i < 3; i++)
+                    {
+                        charas[i].Image = null;
+                    }
                     break;
                 case 0:
                     end.Image = ImageManage.GetSImage("1pWIN.png");
@@ -84,6 +88,10 @@ namespace StrikeWars.Scene.UI
                     break;
                 default:
                     end.Image = ImageManage.GetSImage("draw.png");
+                    for (int i = 0; i < 3; i++)
+                    {
+                        charas[i].Image = null;
+                    }
                     break;
             }
             visible = true;
