@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GameJam_26
+namespace StrikeWars
 {
 #if WINDOWS || LINUX
     /// <summary>

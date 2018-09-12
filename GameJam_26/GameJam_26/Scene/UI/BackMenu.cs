@@ -15,7 +15,7 @@ using InfinityGame.Device;
 using InfinityGame.Device.KeyboardManage;
 using Microsoft.Xna.Framework.Input;
 
-namespace GameJam_26.Scene.UI
+namespace StrikeWars.Scene.UI
 {
     public class BackMenu : UIWindow
     {

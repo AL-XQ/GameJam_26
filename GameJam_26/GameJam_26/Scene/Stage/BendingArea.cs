@@ -12,7 +12,7 @@ using InfinityGame.Stage.StageObject.Block;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GameJam_26.Scene.Stage
+namespace StrikeWars.Scene.Stage
 {
     public class BendingArea : Block
     {
@@ -36,13 +36,6 @@ namespace GameJam_26.Scene.Stage
             base.Initialize();
         }
 
-        public override void LoadContent()
-        {
-            Image = ImageManage.GetSImage("stageborder.png");
-            Color = Color.Yellow;
-            base.LoadContent();
-        }
-
         public override void CalAllColl(Dictionary<string, StageObj> tempSO)
         {
             var keys = tempSO.Keys.ToArray();
@@ -54,6 +47,20 @@ namespace GameJam_26.Scene.Stage
                 }
             }
             base.CalAllColl(tempSO);
+        }
+
+        public override void Draw2(GameTime gameTime)
+        {
+            if (Image != null)
+            {
+                if (DrawLocation.X <= Stage.StageScene.Size.Width && DrawLocation.Y <= Stage.StageScene.Size.Height)
+                {
+                    if (DrawLocation.X >= -Size.Width && DrawLocation.Y >= -Size.Height)
+                    {
+                        spriteBatch.Draw(Image.ImageT[iTIndex], new Rectangle(DrawLocation, Size.ToPoint()), new Rectangle(new Point(0, 0), size.ToPoint()), Color * Refract);
+                    }
+                }
+            }
         }
     }
 }

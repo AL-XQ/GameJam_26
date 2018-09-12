@@ -8,17 +8,17 @@ using InfinityGame.GameGraphics;
 using InfinityGame.Scene;
 using Microsoft.Xna.Framework.Graphics;
 
-using GameJam_26.Scene.Stage;
+using StrikeWars.Scene.Stage;
 using InfinityGame.UI;
 using InfinityGame.UI.UIContent;
 using Microsoft.Xna.Framework;
 using InfinityGame.Element;
-using GameJam_26.Scene.UI;
+using StrikeWars.Scene.UI;
 using InfinityGame.Device;
 using InfinityGame.Device.KeyboardManage;
 using Microsoft.Xna.Framework.Input;
 
-namespace GameJam_26.Scene
+namespace StrikeWars.Scene
 {
     public class PlayScene : StageScene
     {
@@ -38,6 +38,8 @@ namespace GameJam_26.Scene
 
         public override void Initialize()
         {
+            sounds["st"].Stop();
+            sounds["end"].Stop();
             plpshowtime = s_plpshowtime;
             label01.Text = "";
             plp.Visible = false;
@@ -57,7 +59,7 @@ namespace GameJam_26.Scene
             label03.TextSize = 24f;
             plp = new Panel(graphicsDevice, this);
             plp.BackColor = Color.Transparent;
-            
+
             ShowStage = stages["Stage02"];
             ending = new Ending(graphicsDevice, this);
             ending.Size = new Size(size.Width * 4 / 5, size.Height * 2 / 3);
@@ -69,6 +71,12 @@ namespace GameJam_26.Scene
         }
         public override void LoadContent()
         {
+            sounds.Add("st", SoundManage.GetSound("st.wav"));
+            sounds.Add("end", SoundManage.GetSound("end.wav"));
+            sounds.Add("turn", SoundManage.GetSound("turn.wav"));
+            sounds["st"].SetSELoopPlay(true);
+            sounds["end"].SetSELoopPlay(true);
+            sounds["turn"].SetSELoopPlay(false);
             label01.Location = new Point(size.Width / 2 - label01.Size.Width / 2, 10);
             //backMenu.Text = GetText("BackMenu");
             label02.Location = new Point(size.Width / 2 - label01.Size.Width / 2, size.Height - label01.Size.Height - 10);
@@ -101,12 +109,12 @@ namespace GameJam_26.Scene
 
                 if (s[0] > s[1])
                 {
-                    label01.Text = $"ゲームオーバー、勝者0";
+                    label01.Text = $"ゲームオーバー、勝者1";
                     ed["winner"] = 0;
                 }
                 else if (s[1] > s[0])
                 {
-                    label01.Text = $"ゲームオーバー、勝者1";
+                    label01.Text = $"ゲームオーバー、勝者2";
                     ed["winner"] = 1;
                 }
                 else
@@ -117,10 +125,27 @@ namespace GameJam_26.Scene
                 ending.ShowEnding(ed);
             }
             label02.Text = $"ターン残り時間：{(t.Timedown / 120.0f).ToString("00.00")}秒";
-            label03.Text = $"プレイヤー{t.Pl_Index}のターン";
+            label03.Text = $"プレイヤー{t.Pl_Index + 1}のターン";
             if (GameKeyboard.GetKeyTrigger(Keys.Escape) || IGGamePad.GetKeyTrigger(PlayerIndex.One, Buttons.Back))
             {
                 backMenu.Visible = !backMenu.Visible;
+            }
+            if (ending.Visible)
+            {
+                sounds["st"].Stop();
+                sounds["end"].Play();
+            }
+            else if (backMenu.Visible)
+            {
+                if (!sounds["st"].GetState(Microsoft.Xna.Framework.Audio.SoundState.Paused))
+                    sounds["st"].Pause();
+            }
+            else
+            {
+                if (sounds["st"].GetState(Microsoft.Xna.Framework.Audio.SoundState.Paused))
+                    sounds["st"].Resume();
+                else if (sounds["st"].GetState(Microsoft.Xna.Framework.Audio.SoundState.Stopped))
+                    sounds["st"].Play();
             }
             if (backMenu.Visible || ending.Visible || plp.Visible)
             {
@@ -156,6 +181,7 @@ namespace GameJam_26.Scene
             plp.Size = Size.Parse(plp.Image.Image.Size);
             plp.Location = ((size - plp.Size) / 2).ToPoint();
             plp.Visible = true;
+            sounds["turn"].Play();
         }
     }
 }

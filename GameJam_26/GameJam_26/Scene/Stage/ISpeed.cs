@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using Microsoft.Xna.Framework;
 
-namespace GameJam_26.Scene.Stage
+namespace StrikeWars.Scene.Stage
 {
     public interface ISpeed
     {

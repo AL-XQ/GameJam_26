@@ -12,7 +12,7 @@ using InfinityGame.Stage.StageObject.Block;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GameJam_26.Scene.Stage
+namespace StrikeWars.Scene.Stage
 {
     public class PanicArea : Block
     {
@@ -37,8 +37,7 @@ namespace GameJam_26.Scene.Stage
 
         public override void LoadContent()
         {
-            Image = ImageManage.GetSImage("stageborder.png");
-            Color = Color.Red;
+            Image = ImageManage.GetSImage("hatena.png");
             base.LoadContent();
         }
 

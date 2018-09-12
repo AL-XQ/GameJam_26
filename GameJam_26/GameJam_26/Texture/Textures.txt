@@ -22,3 +22,16 @@
 <chara4.png:0>
 <chara5.png:0>
 <chara6.png:0>
+<doku.png:0>
+<wall.png:0>
+<b_up.png:0>
+<b_right.png:0>
+<b_down.png:0>
+<b_left.png:0>
+<hatena.png:0>
+<border_up.png:0>
+<border_right.png:0>
+<border_down.png:0>
+<border_left.png:0>
+<stage01.png:0>
+<stage02.png:0>

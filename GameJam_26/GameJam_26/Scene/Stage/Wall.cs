@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework;
 using InfinityGame.Device;
 using InfinityGame.Stage.StageObject;
 
-namespace GameJam_26.Scene.Stage
+namespace StrikeWars.Scene.Stage
 {
     public class Wall : Base_Crimp
     {
@@ -40,8 +40,7 @@ namespace GameJam_26.Scene.Stage
 
         public virtual void Desi()
         {
-            Image = ImageManage.GetSImage("stageborder.png");
-            Color = Color.Blue;
+            Image = ImageManage.GetSImage("wall.png");
         }
 
         public override void CalAllColl(Dictionary<string, StageObj> tempSO)

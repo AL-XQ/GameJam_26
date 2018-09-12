@@ -13,7 +13,7 @@ using Microsoft.Xna.Framework.Graphics;
 using InfinityGame.Device;
 using Microsoft.Xna.Framework.Input;
 
-namespace GameJam_26.Scene.UI
+namespace StrikeWars.Scene.UI
 {
     public class MainMenu : UIWindow
     {

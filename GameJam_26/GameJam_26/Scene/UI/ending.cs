@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework;
 using InfinityGame;
 using InfinityGame.Device;
 
-namespace GameJam_26.Scene.UI
+namespace StrikeWars.Scene.UI
 {
     public class Ending : UIWindow
     {

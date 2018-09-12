@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using InfinityGame.Device;
 using Microsoft.Xna.Framework;
 
-namespace GameJam_26.Scene.Stage
+namespace StrikeWars.Scene.Stage
 {
     public class Niddle : Wall
     {
@@ -20,8 +20,7 @@ namespace GameJam_26.Scene.Stage
 
         public override void Desi()
         {
-            Image = ImageManage.GetSImage("stageborder.png");
-            Color = Color.Green;
+            Image = ImageManage.GetSImage("doku.png");
         }
 
         public override void CalAllColl(Dictionary<string, StageObj> tempSO)
