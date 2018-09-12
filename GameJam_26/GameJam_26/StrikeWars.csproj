@@ -177,6 +177,9 @@
     <Content Include="Texture\hatena.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Texture\mh.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Texture\player0.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

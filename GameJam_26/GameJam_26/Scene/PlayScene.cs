@@ -125,7 +125,7 @@ namespace StrikeWars.Scene
                 ending.ShowEnding(ed);
             }
             label02.Text = $"ターン残り時間：{(t.Timedown / 120.0f).ToString("00.00")}秒";
-            label03.Text = $"プレイヤー{t.Pl_Index + 1}のターン";
+            label03.Text = $"プレイヤー{(t.Pl_Index % 2) + 1}のターン";
             if (GameKeyboard.GetKeyTrigger(Keys.Escape) || IGGamePad.GetKeyTrigger(PlayerIndex.One, Buttons.Back))
             {
                 backMenu.Visible = !backMenu.Visible;

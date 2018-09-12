@@ -28,6 +28,7 @@ namespace StrikeWars.Scene.Stage
         private float rotation = 0;
         private Vector2 ct = Vector2.Zero;
         private Point cp = Point.Zero;
+        private SImage mh;
         public Circle Circle { get => circle; set => circle = value; }
         public Dictionary<string, Item> Items { get => items; }
         public Vector2 Speed { get => speed; set => speed = value; }
@@ -65,6 +66,7 @@ namespace StrikeWars.Scene.Stage
             cp = Size.Parse(image.Image.Size).ToPoint();
             sounds.Add("kk", SoundManage.GetSound("kk.wav"));
             sounds["kk"].SetSELoopPlay(false);
+            mh = ImageManage.GetSImage("mh.png");
             base.LoadContent();
         }
 
@@ -106,7 +108,7 @@ namespace StrikeWars.Scene.Stage
                 if (tempSO[l] is ConChara)
                 {
                     if (((ConChara)tempSO[l]).player.Index != player.Index &&
-                        st.Pl_Index == (int)player.Index &&
+                        (st.Pl_Index == (int)player.Index || st.Pl_Index - 2 == (int)player.Index) &&
                         ((ConChara)tempSO[l]).Items.Count > 0)
                     {
                         var it = ((ConChara)tempSO[l]).Items.First().Value;
@@ -160,6 +162,10 @@ namespace StrikeWars.Scene.Stage
                         spriteBatch.Draw(Image.ImageT[iTIndex], new Rectangle(DrawLocation + new Point(size.Width / 2, size.Width / 2), Size.ToPoint()), new Rectangle(new Point(0, 0), cp), Color * refract, rotation, ct, SpriteEffects.None, 0);
                     }
                 }
+            }
+            if (skipTrun)
+            {
+                spriteBatch.Draw(mh.ImageT[0], new Rectangle(DrawLocation + new Point(size.Width / 2, size.Width / 2), Size.ToPoint()), new Rectangle(new Point(0, 0), cp), Color.White * refract, rotation, ct, SpriteEffects.None, 0);
             }
         }
     }

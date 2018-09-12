@@ -35,3 +35,4 @@
 <border_left.png:0>
 <stage01.png:0>
 <stage02.png:0>
+<mh.png:0>
