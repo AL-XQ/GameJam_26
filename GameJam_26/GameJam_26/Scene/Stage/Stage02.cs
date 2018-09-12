@@ -75,7 +75,9 @@ namespace GameJam_26.Scene.Stage
             stageObjs["Two_2"].Coordinate = new Vector2(sp + 6.75f * size_b.X, sp + 6.5f * size_b.Y);
 
             ((BendingArea)stageObjs["bendingarea00"]).Power = new Vector2(1, 0);
+            stageObjs["bendingarea00"].Image = ImageManage.GetSImage("b_right.png");
             ((BendingArea)stageObjs["bendingarea01"]).Power = new Vector2(-1, 0);
+            stageObjs["bendingarea00"].Image = ImageManage.GetSImage("b_left.png");
 
             base.Initialize();
         }
@@ -106,18 +108,11 @@ namespace GameJam_26.Scene.Stage
         }
         public override void LoadContent()
         {
-            stageObjs["field"].Image = ImageManage.GetSImage("field.png");
-            stageObjs["field"].Color = Color.YellowGreen;
-            Color c = Color.Peru;
-            stageObjs["border_top"].Color = c;
-            stageObjs["border_left"].Color = c;
-            stageObjs["border_right"].Color = c;
-            stageObjs["border_bottom"].Color = c;
-            var im = ImageManage.GetSImage("stageborder.png");
-            stageObjs["border_top"].Image = im;
-            stageObjs["border_left"].Image = im;
-            stageObjs["border_right"].Image = im;
-            stageObjs["border_bottom"].Image = im;
+            stageObjs["field"].Image = ImageManage.GetSImage("stage02.png");
+            stageObjs["border_top"].Image = ImageManage.GetSImage("border_up.png");
+            stageObjs["border_left"].Image = ImageManage.GetSImage("border_left.png");
+            stageObjs["border_right"].Image = ImageManage.GetSImage("border_right.png");
+            stageObjs["border_bottom"].Image = ImageManage.GetSImage("border_down.png");
             base.LoadContent();
         }
     }

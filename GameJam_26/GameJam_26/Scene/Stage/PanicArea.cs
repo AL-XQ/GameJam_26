@@ -37,8 +37,7 @@ namespace GameJam_26.Scene.Stage
 
         public override void LoadContent()
         {
-            Image = ImageManage.GetSImage("stageborder.png");
-            Color = Color.Red;
+            Image = ImageManage.GetSImage("hatena.png");
             base.LoadContent();
         }
 
