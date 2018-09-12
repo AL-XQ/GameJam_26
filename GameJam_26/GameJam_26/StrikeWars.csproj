@@ -57,6 +57,9 @@
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>StrikeWars.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
@@ -80,6 +83,7 @@
     <Compile Include="Scene\Stage\Wall.cs" />
     <Compile Include="Scene\TitleScene.cs" />
     <Compile Include="Scene\UI\BackMenu.cs" />
+    <Compile Include="Scene\UI\Cridit.cs" />
     <Compile Include="Scene\UI\Ending.cs" />
     <Compile Include="Scene\UI\Icon.cs" />
     <Compile Include="Scene\UI\MainMenu.cs" />

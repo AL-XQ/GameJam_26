@@ -76,6 +76,7 @@ namespace StrikeWars.Scene.UI
         {
             start.Click += Start;
             exit.Click += Exit;
+            credit.Click += Cdt;
         }
 
         public override void PreLoadContent()
@@ -143,6 +144,11 @@ namespace StrikeWars.Scene.UI
         {
             ((TitleScene)parent).StageSelect.Visible = true;
             ((TitleScene)parent).StageSelect.Initialize();
+        }
+
+        private void Cdt(object sender, EventArgs e)
+        {
+            ((TitleScene)parent).Cridit.Visible = true;
         }
 
         private void Exit(object sender, EventArgs e)

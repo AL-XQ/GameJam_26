@@ -23,8 +23,10 @@ namespace StrikeWars.Scene
         private MainMenu mainMeun;
         private StageSelect stageSelect;
         private Panel title;
+        private Cridit cridit;
 
         public StageSelect StageSelect { get => stageSelect; }
+        public Cridit Cridit { get => cridit; set => cridit = value; }
 
         public TitleScene(string aName, GraphicsDevice aGraphicsDevice, BaseDisplay aParent, GameRun aGameRun) : base(aName, aGraphicsDevice, aParent, aGameRun)
         {
@@ -41,6 +43,9 @@ namespace StrikeWars.Scene
             mainMeun = new MainMenu(graphicsDevice, this);
             mainMeun.Size = new Size(size.Width * 2 / 7, size.Height / 3);
             mainMeun.Location = new Point(size.Width / 2 - mainMeun.Size.Width / 2, size.Height * 2 / 3);
+            cridit = new Cridit(graphicsDevice, this);
+            cridit.Size = size / 2;
+            cridit.Location = ((size - cridit.Size) / 2).ToPoint();
             stageSelect = new StageSelect(graphicsDevice, this);
             
             base.PreLoadContent();
