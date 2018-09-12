@@ -50,13 +50,16 @@ namespace StrikeWars.Scene
         {
             new Stage01(GraphicsDevice, this, "Stage01");
             new Stage02(GraphicsDevice, this, "Stage02");
-
+            System.Drawing.Color tc = System.Drawing.Color.DarkBlue;
             label01 = new Label(graphicsDevice, this);
             label01.TextSize = 24f;
+            label01.BDText.ForeColor = tc;
             label02 = new Label(graphicsDevice, this);
             label02.TextSize = 24f;
+            label02.BDText.ForeColor = tc;
             label03 = new Label(graphicsDevice, this);
             label03.TextSize = 24f;
+            label03.BDText.ForeColor = tc;
             plp = new Panel(graphicsDevice, this);
             plp.BackColor = Color.Transparent;
 
@@ -79,7 +82,8 @@ namespace StrikeWars.Scene
             sounds["turn"].SetSELoopPlay(false);
             label01.Location = new Point(size.Width / 2 - label01.Size.Width / 2, 10);
             //backMenu.Text = GetText("BackMenu");
-            label02.Location = new Point(size.Width / 2 - label01.Size.Width / 2, size.Height - label01.Size.Height - 10);
+            label02.Location = new Point(size.Width / 2 - label02.Size.Width / 2, size.Height - label02.Size.Height - 10);
+            label03.Location = new Point(5, 5);
             base.LoadContent();
         }
 
@@ -164,6 +168,8 @@ namespace StrikeWars.Scene
                 }
                 return;
             }
+            label01.Location = new Point(size.Width / 2 - label01.Size.Width / 2, 10);
+            label02.Location = new Point(size.Width / 2 - label02.Size.Width / 2, size.Height - label02.Size.Height - 10);
             base.Update(gameTime);
         }
 
