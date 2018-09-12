@@ -50,6 +50,7 @@ namespace StrikeWars.Scene
         {
             new Stage01(GraphicsDevice, this, "Stage01");
             new Stage02(GraphicsDevice, this, "Stage02");
+            new Stage03(GraphicsDevice, this, "Stage03");
 
             label01 = new Label(graphicsDevice, this);
             label01.TextSize = 24f;
@@ -60,7 +61,7 @@ namespace StrikeWars.Scene
             plp = new Panel(graphicsDevice, this);
             plp.BackColor = Color.Transparent;
 
-            ShowStage = stages["Stage02"];
+            ShowStage = stages["Stage03"];
             ending = new Ending(graphicsDevice, this);
             ending.Size = new Size(size.Width * 4 / 5, size.Height * 2 / 3);
             ending.Location = (size / 2 - ending.Size / 2).ToPoint();
