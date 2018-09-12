@@ -76,7 +76,6 @@
     <Compile Include="Scene\Stage\Player.cs" />
     <Compile Include="Scene\Stage\Stage01.cs" />
     <Compile Include="Scene\Stage\Stage02.cs" />
-    <Compile Include="Scene\Stage\stage03.cs" />
     <Compile Include="Scene\Stage\StageBorder.cs" />
     <Compile Include="Scene\Stage\Wall.cs" />
     <Compile Include="Scene\TitleScene.cs" />
