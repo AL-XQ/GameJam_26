@@ -13,7 +13,7 @@ using InfinityGame.Stage;
 using InfinityGame.Element;
 using InfinityGame.Device;
 
-namespace GameJam_26.Scene.Stage
+namespace StrikeWars.Scene.Stage
 {
     public class Item : Block, ISpeed
     {
@@ -66,7 +66,10 @@ namespace GameJam_26.Scene.Stage
             if (owner != null)
             {
                 owner.Items.Add(Name, this);
-                owner.Color = Color.Red;
+                if (owner.Player.Index == 0)
+                    owner.Color = Color.Green;
+                else
+                    owner.Color = Color.Yellow;
                 visible = false;
             }
             else

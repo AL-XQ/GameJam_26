@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Graphics;
 using InfinityGame.Element;
 using InfinityGame.Def;
 using Microsoft.Xna.Framework;
-namespace GameJam_26.Scene.Stage
+namespace StrikeWars.Scene.Stage
 {
     class Stage02 : Base_Stage
     {

@@ -12,7 +12,7 @@ using InfinityGame.Stage.StageObject.Block;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GameJam_26.Scene.Stage
+namespace StrikeWars.Scene.Stage
 {
     public class BendingArea : Block
     {
@@ -49,7 +49,7 @@ namespace GameJam_26.Scene.Stage
             base.CalAllColl(tempSO);
         }
 
-        /*public override void Draw2(GameTime gameTime)
+        public override void Draw2(GameTime gameTime)
         {
             if (Image != null)
             {
@@ -61,6 +61,6 @@ namespace GameJam_26.Scene.Stage
                     }
                 }
             }
-        }*/
+        }
     }
 }

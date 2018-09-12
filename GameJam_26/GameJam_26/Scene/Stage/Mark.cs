@@ -8,7 +8,7 @@ using InfinityGame.Stage.StageObject;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GameJam_26.Scene.Stage
+namespace StrikeWars.Scene.Stage
 {
     public class Mark : StageField
     {

@@ -11,7 +11,7 @@ using InfinityGame.UI.UIContent;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GameJam_26.Scene
+namespace StrikeWars.Scene
 {
     public class Load_Scene : LoadScene
     {

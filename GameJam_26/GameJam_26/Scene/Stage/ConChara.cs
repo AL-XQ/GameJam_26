@@ -11,7 +11,7 @@ using InfinityGame.Element;
 using Microsoft.Xna.Framework;
 using InfinityGame.Stage;
 
-namespace GameJam_26.Scene.Stage
+namespace StrikeWars.Scene.Stage
 {
     public class ConChara : Base_Chara, ICircle, ISpeed
     {

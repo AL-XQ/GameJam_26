@@ -11,7 +11,7 @@ using InfinityGame.Stage.StageObject.Block;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GameJam_26.Scene.Stage
+namespace StrikeWars.Scene.Stage
 {
     public class Base_Crimp : Crimp
     {

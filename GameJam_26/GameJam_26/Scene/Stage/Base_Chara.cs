@@ -7,7 +7,7 @@ using InfinityGame.GameGraphics;
 using InfinityGame.Stage.StageObject.Actor;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GameJam_26.Scene.Stage
+namespace StrikeWars.Scene.Stage
 {
     public class Base_Chara : Character
     {

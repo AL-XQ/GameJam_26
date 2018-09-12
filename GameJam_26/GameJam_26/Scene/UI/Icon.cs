@@ -9,11 +9,11 @@ using InfinityGame.Element;
 using InfinityGame.Device;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using GameJam_26.Scene.Stage;
+using StrikeWars.Scene.Stage;
 using InfinityGame;
 using InfinityGame.Scene;
 
-namespace GameJam_26.Scene.UI
+namespace StrikeWars.Scene.UI
 {
     public partial class Icon : AnimeButton
     {
@@ -51,6 +51,8 @@ namespace GameJam_26.Scene.UI
         public override void LoadContent()
         {
             border = ImageManage.GetSImage("iconborder.png");
+            sounds.Add("start", SoundManage.GetSound("start.wav"));
+            sounds["start"].SetSELoopPlay(false);
             base.LoadContent();
         }
 
@@ -73,9 +75,11 @@ namespace GameJam_26.Scene.UI
 
         private void I_Click(object sender, EventArgs e)
         {
+            sounds["start"].Play();
             var sc = GameRun.Instance.scenes;
             ((StageScene)sc["play"]).ShowStage = ((StageScene)sc["play"]).stages[stage];
             ((StageScene)sc["play"]).stages[stage].Initialize();
+            sc["title"].sounds["open"].Stop();
             sc["title"].IsRun = false;
             sc["play"].IsRun = true;
         }

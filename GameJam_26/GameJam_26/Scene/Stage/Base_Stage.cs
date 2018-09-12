@@ -14,7 +14,7 @@ using InfinityGame.Def;
 using InfinityGame.Device;
 using InfinityGame.Element;
 
-namespace GameJam_26.Scene.Stage
+namespace StrikeWars.Scene.Stage
 {
     public class Base_Stage : BaseStage
     {

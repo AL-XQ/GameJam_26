@@ -12,7 +12,7 @@ using InfinityGame.Element;
 using InfinityGame.Def;
 using Microsoft.Xna.Framework;
 
-namespace GameJam_26.Scene.Stage
+namespace StrikeWars.Scene.Stage
 {
     public class Stage01 : Base_Stage
     {
@@ -106,6 +106,7 @@ namespace GameJam_26.Scene.Stage
         public override void LoadContent()
         {
             stageObjs["field"].Image = ImageManage.GetSImage("stage01.png");
+            stageObjs["field"].Color = new Color(200, 200, 200);
             stageObjs["border_top"].Image = ImageManage.GetSImage("border_up.png");
             stageObjs["border_left"].Image = ImageManage.GetSImage("border_left.png");
             stageObjs["border_right"].Image = ImageManage.GetSImage("border_right.png");

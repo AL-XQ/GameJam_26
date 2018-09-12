@@ -13,7 +13,7 @@ using InfinityGame.Device.KeyboardManage;
 using InfinityGame.Stage.StageObject;
 using InfinityGame.Element;
 
-namespace GameJam_26.Scene.Stage
+namespace StrikeWars.Scene.Stage
 {
     public class Player
     {
@@ -140,7 +140,9 @@ namespace GameJam_26.Scene.Stage
             markBase.Coordinate = Foucs.Circle.Center - (markBase.Size / 2).ToVector2();
             mark.Size = Size.Parse((mksz * nowv.Length()).ToPoint());
             mark.Coordinate = Foucs.Circle.Center;
-            mark.Rotation = (float)Math.Atan2(nowv.Y, nowv.X);
+            Vector2 ve = nowv;
+            ve.Normalize();
+            mark.Rotation = (float)Math.Atan2(ve.Y, ve.X);
             mark.DrawOrder = 10;
             if (Foucs.Rndve)
                 mark.Visible = false;
@@ -173,7 +175,7 @@ namespace GameJam_26.Scene.Stage
                     f = -nowv;
                 else
                     f = new Vector2(rnd.Next(101) / 100f, rnd.Next(101) / 100f);
-                Foucs.Speed = f * f * f * Foucs.MaxSpeed;
+                Foucs.Speed = f * f.Length() * f.Length() * Foucs.MaxSpeed;
                 ResetV();
                 return true;
             }

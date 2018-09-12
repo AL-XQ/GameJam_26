@@ -14,9 +14,9 @@ using InfinityGame.UI.UIContent;
 using InfinityGame.Element;
 using InfinityGame.Device;
 
-using GameJam_26.Scene.UI;
+using StrikeWars.Scene.UI;
 
-namespace GameJam_26.Scene
+namespace StrikeWars.Scene
 {
     public class TitleScene : BaseScene
     {
@@ -49,7 +49,16 @@ namespace GameJam_26.Scene
         public override void LoadContent()
         {
             image = ImageManage.GetSImage("titlescene.jpg");
+            sounds.Add("open", SoundManage.GetSound("open.wav"));
+            sounds["open"].SetSELoopPlay(true);
             base.LoadContent();
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            if (IsRun && sounds["open"].GetState(Microsoft.Xna.Framework.Audio.SoundState.Stopped))
+                sounds["open"].Play();
+            base.Update(gameTime);
         }
     }
 }

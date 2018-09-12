@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using InfinityGame.Device;
 using Microsoft.Xna.Framework;
 
-namespace GameJam_26.Scene.Stage
+namespace StrikeWars.Scene.Stage
 {
     public class Niddle : Wall
     {

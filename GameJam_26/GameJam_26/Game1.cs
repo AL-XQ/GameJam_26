@@ -12,12 +12,12 @@ using System;
 using System.Threading;
 using InfinityGame.Device.WindowsScreen;
 
-using GameJam_26.Scene;
+using StrikeWars.Scene;
 
 /// <summary>
 /// プロジェクト名がnamespaceとなります
 /// </summary>
-namespace GameJam_26
+namespace StrikeWars
 {
     /// <summary>
     /// ゲームの基盤となるメインのクラス
@@ -28,7 +28,7 @@ namespace GameJam_26
         // フィールド（このクラスの情報を記述）
         private GraphicsDeviceManager graphicsDeviceManager;//グラフィックスデバイスを管理するオブジェクト
         //private SpriteBatch spriteBatch;//画像をスクリーン上に描画するためのオブジェクト  //このクラスで描画しない
-        private string title = "GameJam_26";
+        private string title = "StrikeWars";
         private GameRun gameRun;
         private InfinityGame.Element.Size tempScreen;
         private Load_Scene Load_Scene;
@@ -184,7 +184,7 @@ namespace GameJam_26
                 //graphicsDeviceManager.ToggleFullScreen();
             }
             gameRun.IsGameRun = false;
-            Thread.Sleep(500);
+            Thread.Sleep(1000);
             base.OnExiting(sender, args);
         }
 
