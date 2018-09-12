@@ -25,6 +25,9 @@ namespace GameJam_26.Scene.Stage
         private bool skipTrun = false;
         private bool rndve = false;
         private bool run = false;
+        private float rotation = 0;
+        private Vector2 ct = Vector2.Zero;
+        private Point cp = Point.Zero;
         public Circle Circle { get => circle; set => circle = value; }
         public Dictionary<string, Item> Items { get => items; }
         public Vector2 Speed { get => speed; set => speed = value; }
@@ -56,9 +59,10 @@ namespace GameJam_26.Scene.Stage
 
         public override void LoadContent()
         {
-            Image = ImageManage.GetSImage("conchara.png");
-            Size = Size.Parse(image.Image.Size) * 4 / 5;
+            Size = Size.Parse(image.Image.Size) * 8 / 130;
             circle = new Circle(this, Size.Width / 2);
+            ct = new Vector2(image.Image.Size.Width / 2, image.Image.Size.Height / 2);
+            cp = Size.Parse(image.Image.Size).ToPoint();
             base.LoadContent();
         }
 
@@ -69,6 +73,15 @@ namespace GameJam_26.Scene.Stage
             {
                 AddVelocity(speed, VeloParam.Run);
                 speed -= speed * st.Resistance;
+                float kd = speed.Length() / circle.Radius;
+                if (speed.X < 0)
+                    kd = -kd;
+                float nkd = rotation + kd;
+                if (nkd > 2 * Math.PI)
+                    nkd -= (float)(2 * Math.PI);
+                else if (nkd < -2 * Math.PI)
+                    nkd += (float)(2 * Math.PI);
+                rotation = nkd;
                 run = true;
             }
             if (speed.Length() <= 0.05f)
@@ -130,6 +143,20 @@ namespace GameJam_26.Scene.Stage
                 }
             }
             base.CalAllColl(tempSO);
+        }
+
+        public override void Draw2(GameTime gameTime)
+        {
+            if (Image != null)
+            {
+                if (DrawLocation.X <= Stage.StageScene.Size.Width && DrawLocation.Y <= Stage.StageScene.Size.Height)
+                {
+                    if (DrawLocation.X >= -Size.Width && DrawLocation.Y >= -Size.Height)
+                    {
+                        spriteBatch.Draw(Image.ImageT[iTIndex], new Rectangle(DrawLocation + new Point(size.Width / 2, size.Width / 2), Size.ToPoint()), new Rectangle(new Point(0, 0), cp), Color * refract, rotation, ct, SpriteEffects.None, 0);
+                    }
+                }
+            }
         }
     }
 }

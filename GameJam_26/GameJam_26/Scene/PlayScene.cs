@@ -56,6 +56,7 @@ namespace GameJam_26.Scene
             label03 = new Label(graphicsDevice, this);
             label03.TextSize = 24f;
             plp = new Panel(graphicsDevice, this);
+            plp.BackColor = Color.Transparent;
             
             ShowStage = stages["Stage02"];
             ending = new Ending(graphicsDevice, this);

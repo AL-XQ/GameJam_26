@@ -40,10 +40,10 @@ namespace GameJam_26.Scene.Stage
             switch (index)
             {
                 case PlayerIndex.One:
-                    charaColor = Color.Green;
+                    charaColor = Color.White;
                     break;
                 case PlayerIndex.Two:
-                    charaColor = Color.Blue;
+                    charaColor = Color.White;
                     break;
             }
         }
@@ -76,6 +76,18 @@ namespace GameJam_26.Scene.Stage
             {
                 charas.Add(new ConChara(stage.GraphicsDevice, stage, index.ToString() + "_" + i.ToString(), this));
             }
+            for (int i = 0; i < 3; i++)
+            {
+                if (index == 0)
+                {
+                    charas[i].Image = ImageManage.GetSImage($"chara{i + 1}.png");
+                }
+                else
+                {
+                    charas[i].Image = ImageManage.GetSImage($"chara{i + 4}.png");
+                }
+                charas[i].MaxSpeed = 20f + 10 * (i + 1);
+            }
             mark = new Mark(stage.GraphicsDevice, stage, index.ToString() + "_mark");
             markBase = new StageField(stage.GraphicsDevice, stage, index.ToString() + "_markBase");
         }
@@ -91,7 +103,7 @@ namespace GameJam_26.Scene.Stage
         private void SetFoucs(int value)
         {
             bool endtrun = true;
-            foreach(var l in charas)
+            foreach (var l in charas)
             {
                 if (!l.SkipTrun)
                 {
