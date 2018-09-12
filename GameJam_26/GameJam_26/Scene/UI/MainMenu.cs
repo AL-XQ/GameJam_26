@@ -111,7 +111,7 @@ namespace GameJam_26.Scene.UI
 
         public override void Update(GameTime gameTime)
         {
-            if (visible)
+            if (visible && !((TitleScene)parent).StageSelect.Visible)
             {
                 if (IGGamePad.GetKeyTrigger(PlayerIndex.One, Buttons.DPadUp))
                     Index--;
@@ -141,9 +141,8 @@ namespace GameJam_26.Scene.UI
 
         private void Start(object sender, EventArgs e)
         {
-            var sc = GameRun.Instance.scenes;
-            sc["title"].IsRun = false;
-            sc["play"].IsRun = true;
+            ((TitleScene)parent).StageSelect.Visible = true;
+            ((TitleScene)parent).StageSelect.Initialize();
         }
 
         private void Exit(object sender, EventArgs e)

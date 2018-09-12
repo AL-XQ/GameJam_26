@@ -81,7 +81,9 @@
     <Compile Include="Scene\TitleScene.cs" />
     <Compile Include="Scene\UI\BackMenu.cs" />
     <Compile Include="Scene\UI\Ending.cs" />
+    <Compile Include="Scene\UI\Icon.cs" />
     <Compile Include="Scene\UI\MainMenu.cs" />
+    <Compile Include="Scene\UI\StageSelect.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="InfinityGame, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -140,6 +142,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Texture\field.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Texture\iconborder.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Texture\IG\IG.txt">
@@ -215,6 +220,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Texture\player1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Texture\stageicon0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Texture\stageicon1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Texture\stageborder.png">

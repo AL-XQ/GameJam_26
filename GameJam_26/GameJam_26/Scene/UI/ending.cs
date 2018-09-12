@@ -31,8 +31,8 @@ namespace GameJam_26.Scene.UI
         }
         private void RegistEvent()
         {
-            
-            
+
+
         }
         public override void PreLoadContent()
         {
@@ -44,7 +44,7 @@ namespace GameJam_26.Scene.UI
         }
         public override void LoadContent()
         {
-            end.Location = new Point(size.Width / 2 - end.Size.Width / 2, 60);
+            end.Location = (size / 2 - end.Size / 2).ToPoint();
             Image = ImageManage.GetSImage("window.png");
             base.LoadContent();
         }
@@ -52,7 +52,7 @@ namespace GameJam_26.Scene.UI
         public void ShowEnding(Dictionary<string, object> args)
         {
             int w = (int)args["winner"];
-            switch(w)
+            switch (w)
             {
                 case -1:
                     end.Image = ImageManage.GetSImage("draw.png");
