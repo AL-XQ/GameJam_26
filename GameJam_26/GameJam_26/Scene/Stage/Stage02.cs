@@ -34,8 +34,8 @@ namespace GameJam_26.Scene.Stage
 
             stageObjs["wall00"].Size = size3;
             stageObjs["wall01"].Size = size3;
-            stageObjs["niddle00"].Size = size0;
-            stageObjs["niddle01"].Size = size0;
+            stageObjs["bendingarea02"].Size = size0;
+            stageObjs["bendingarea03"].Size = size0;
 
 
             stageObjs["panicarea00"].Size = size1;
@@ -48,8 +48,8 @@ namespace GameJam_26.Scene.Stage
 
             stageObjs["wall00"].Coordinate = new Vector2(sp + 0.75f * size_b.X, sp + 5.0f * size_b.Y);
             stageObjs["wall01"].Coordinate = new Vector2(sp + 10.75f * size_b.X, sp + 5.0f * size_b.Y);
-            stageObjs["niddle00"].Coordinate = new Vector2(sp + 5.525f * size_b.X, sp + 0.75f * size_b.Y);
-            stageObjs["niddle01"].Coordinate = new Vector2(sp + 5.525f * size_b.X, sp + 10.4f * size_b.Y);
+            stageObjs["bendingarea02"].Coordinate = new Vector2(sp + 5.525f * size_b.X, sp + 0.75f * size_b.Y);
+            stageObjs["bendingarea03"].Coordinate = new Vector2(sp + 5.525f * size_b.X, sp + 10.4f * size_b.Y);
 
 
             stageObjs["panicarea00"].Coordinate = new Vector2(sp + 0.5f * size_b.X, sp + 1.6f * size_b.Y);
@@ -74,8 +74,12 @@ namespace GameJam_26.Scene.Stage
             stageObjs["Two_1"].Coordinate = new Vector2(sp + 7f * size_b.X, sp + 5.25f * size_b.Y);
             stageObjs["Two_2"].Coordinate = new Vector2(sp + 6.75f * size_b.X, sp + 6.5f * size_b.Y);
 
-            ((BendingArea)stageObjs["bendingarea00"]).Power = new Vector2(1, 0);
-            ((BendingArea)stageObjs["bendingarea01"]).Power = new Vector2(-1, 0);
+            ((BendingArea)stageObjs["bendingarea00"]).Power = new Vector2(0.5f, 0);
+            ((BendingArea)stageObjs["bendingarea01"]).Power = new Vector2(-0.5f, 0);
+            ((BendingArea)stageObjs["bendingarea02"]).Power = new Vector2(0, 0.5f);
+            ((BendingArea)stageObjs["bendingarea03"]).Power = new Vector2(0, -0.5f);
+
+
 
             base.Initialize();
         }
@@ -84,8 +88,8 @@ namespace GameJam_26.Scene.Stage
             new Wall(graphicsDevice, this, "wall00");
             new Wall(graphicsDevice, this, "wall01");
 
-            new Niddle(graphicsDevice, this, "niddle00");
-            new Niddle(graphicsDevice, this, "niddle01");
+            new BendingArea(graphicsDevice, this, "bendingarea02");
+            new BendingArea(graphicsDevice, this, "bendingarea03");
 
 
             new PanicArea(graphicsDevice, this, "panicarea00");
