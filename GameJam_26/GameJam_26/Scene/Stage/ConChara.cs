@@ -114,7 +114,7 @@ namespace StrikeWars.Scene.Stage
                         var it = ((ConChara)tempSO[l]).Items.First().Value;
                         it.SetOwner(null);
                         it.RollDown(new Vector2(speed.X * 0.5f, speed.Length() * 0.7f));
-                        st.Pl_Index = (int)player.Index + 2;
+                        //st.Pl_Index = (int)player.Index + 2;
                     }
                 }
             }

@@ -18,7 +18,7 @@ namespace StrikeWars.Scene.Stage
 {
     public class Base_Stage : BaseStage
     {
-        private int turn = 12;
+        private int turn = 8;
         private int turnstate = 0;
         private List<Player> players = new List<Player>();
         private int pl_index = 0;
@@ -51,7 +51,7 @@ namespace StrikeWars.Scene.Stage
         public override void Initialize()
         {
             run = false;
-            turn = 12;
+            turn = 8;
             turnstate = 0;
             gameOver = false;
             pl_index = rnd.Next(2);
